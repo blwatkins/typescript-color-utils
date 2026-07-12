@@ -12,7 +12,7 @@ toc: true
 
 ## About This Page
 
-This page is a technical record of the skills, tools, and engineering practices represented in the npm TypeScript Package Template project.
+This page is a technical record of the skills, tools, and engineering practices represented in the TypeScript Color Utilities project.
 
 ## Project Overview
 
