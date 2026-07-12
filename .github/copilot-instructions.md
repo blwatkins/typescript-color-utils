@@ -2,8 +2,7 @@
 
 ## Project Overview
 
-A template repository for creating TypeScript packages published to npm.
-Provides an example source structure, build tooling, documentation generation, and GitHub automation for builds, publishing, dependency updates, and security scanning.
+This repository contains `@blwatkins/color-utils`, a toolkit of library-agnostic TypeScript and JavaScript utilities for creating and managing colors.
 
 ## Companion Instruction Files
 
@@ -234,7 +233,7 @@ Review the `keywords` array in `package.json`:
 
 ### 5. GitHub Repository Topics
 
-Verify that the topics on the GitHub repository ([blwatkins/npm-typescript-package-template](https://github.com/blwatkins/npm-typescript-package-template)) reflect the current capabilities.
+Verify that the topics on the GitHub repository ([blwatkins/typescript-color-utils](https://github.com/blwatkins/typescript-color-utils)) reflect the current capabilities.
 Topics should align with `package.json` keywords where appropriate.
 Request the current topics to be updated, if necessary.
 Provide any topic change suggestions to the project maintainers and any accepted changes will be updated manually.
