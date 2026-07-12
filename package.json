@@ -59,7 +59,7 @@
     "globals": "^17.7.0",
     "tsdown": "^0.22.5",
     "typedoc": "^0.28.19",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.62.1",
     "vitest": "^4.1.8"
   },
