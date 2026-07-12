@@ -1,20 +1,20 @@
 {
-  "name": "@blwatkins/template",
-  "version": "1.0.0",
+  "name": "@blwatkins/color-utils",
+  "version": "0.1.0-alpha.0",
   "license": "MIT",
   "private": false,
-  "description": "A template project for creating a TypeScript package for npm.",
+  "description": "A toolkit of library-agnostic TypeScript and JavaScript utilities for creating and managing colors.",
   "author": {
     "name": "Brittni Watkins",
     "url": "https://blwatkins.github.io/"
   },
-  "homepage": "https://blwatkins.github.io/npm-typescript-package-template/",
+  "homepage": "https://blwatkins.github.io/typescript-color-utils/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blwatkins/npm-typescript-package-template.git"
+    "url": "git+https://github.com/blwatkins/typescript-color-utils.git"
   },
   "bugs": {
-    "url": "https://github.com/blwatkins/npm-typescript-package-template/issues"
+    "url": "https://github.com/blwatkins/typescript-color-utils/issues"
   },
   "type": "module",
   "engines": {
@@ -57,10 +57,17 @@
     "eslint-plugin-es-x": "^9.7.0",
     "eslint-plugin-jsdoc": "^63.0.13",
     "globals": "^17.7.0",
-    "tsdown": "^0.22.3",
+    "tsdown": "^0.22.5",
     "typedoc": "^0.28.19",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.1",
     "vitest": "^4.1.8"
-  }
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "esm",
+    "color",
+    "utilities"
+  ]
 }

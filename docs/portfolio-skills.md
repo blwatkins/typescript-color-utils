@@ -6,7 +6,7 @@ author:
   - Claude Code
   - GitHub Copilot
 date: 2026-06-17
-modified_date: 2026-07-10
+modified_date: 2026-07-12
 toc: true
 ---
 
@@ -16,12 +16,12 @@ This page is a technical record of the skills, tools, and engineering practices 
 
 ## Project Overview
 
-The npm TypeScript Package Template is a starter repository for authoring and publishing TypeScript packages to npm.
-The project is maintained at [blwatkins/npm-typescript-package-template](https://github.com/blwatkins/npm-typescript-package-template) and built with TypeScript and tsdown.
+TypeScript Color Utilities (`@blwatkins/color-utils`) is a toolkit of library-agnostic TypeScript and JavaScript utilities for creating and managing colors.
+The repository is maintained at [blwatkins/typescript-color-utils](https://github.com/blwatkins/typescript-color-utils) and built with TypeScript and tsdown.
 
 ## At a Glance
 
-- **Project Type:** Reusable project template / starter for npm packages
+- **Project Type:** Color utility package
 - **Primary Language:** TypeScript
 - **Primary Runtime:** Node.js
 - **Build Pipeline:** tsdown
@@ -70,8 +70,8 @@ The build pipeline generates those outputs from `src/index.ts` using tsdown.
 
 **Evidence:**
 
-- [package.json](https://github.com/blwatkins/npm-typescript-package-template/blob/main/package.json)
-- [tsdown.config.ts](https://github.com/blwatkins/npm-typescript-package-template/blob/main/tsdown.config.ts)
+- [package.json](https://github.com/blwatkins/typescript-color-utils/blob/main/package.json)
+- [tsdown.config.ts](https://github.com/blwatkins/typescript-color-utils/blob/main/tsdown.config.ts)
 
 ### Utility module composition and re-export boundaries
 
@@ -80,8 +80,8 @@ This keeps the package API small while still allowing clear internal organizatio
 
 **Evidence:**
 
-- [src/index.ts](https://github.com/blwatkins/npm-typescript-package-template/blob/main/src/index.ts)
-- [src/hello-world/index.ts](https://github.com/blwatkins/npm-typescript-package-template/blob/main/src/hello-world/index.ts)
+- [src/index.ts](https://github.com/blwatkins/typescript-color-utils/blob/main/src/index.ts)
+- [src/hello-world/index.ts](https://github.com/blwatkins/typescript-color-utils/blob/main/src/hello-world/index.ts)
 
 ### Strict typing and lint enforcement model
 
@@ -90,9 +90,9 @@ JavaScript and TypeScript lint configurations apply recommended and stricter rul
 
 **Evidence:**
 
-- [tsconfig.json](https://github.com/blwatkins/npm-typescript-package-template/blob/main/tsconfig.json)
-- [eslint.config.js.mjs](https://github.com/blwatkins/npm-typescript-package-template/blob/main/eslint.config.js.mjs)
-- [eslint.config.ts.mjs](https://github.com/blwatkins/npm-typescript-package-template/blob/main/eslint.config.ts.mjs)
+- [tsconfig.json](https://github.com/blwatkins/typescript-color-utils/blob/main/tsconfig.json)
+- [eslint.config.js.mjs](https://github.com/blwatkins/typescript-color-utils/blob/main/eslint.config.js.mjs)
+- [eslint.config.ts.mjs](https://github.com/blwatkins/typescript-color-utils/blob/main/eslint.config.ts.mjs)
 
 ### CI verification gates
 
@@ -101,8 +101,8 @@ The primary CI workflow runs `npm ci`, lint, build, and tests across supported N
 
 **Evidence:**
 
-- [package.json scripts](https://github.com/blwatkins/npm-typescript-package-template/blob/main/package.json)
-- [npm-test.yml](https://github.com/blwatkins/npm-typescript-package-template/blob/main/.github/workflows/npm-test.yml)
+- [package.json scripts](https://github.com/blwatkins/typescript-color-utils/blob/main/package.json)
+- [npm-test.yml](https://github.com/blwatkins/typescript-color-utils/blob/main/.github/workflows/npm-test.yml)
 
 ### Documentation generation and GitHub Pages publishing path
 
@@ -111,10 +111,10 @@ Release-specific docs are stored under a versioned directory structure in `docs/
 
 **Evidence:**
 
-- [typedoc.json](https://github.com/blwatkins/npm-typescript-package-template/blob/main/typedoc.json)
-- [gh-pages-jekyll.yml](https://github.com/blwatkins/npm-typescript-package-template/blob/main/.github/workflows/gh-pages-jekyll.yml)
-- [docs/index.md](https://github.com/blwatkins/npm-typescript-package-template/blob/main/docs/index.md)
-- [docs/releases directory](https://github.com/blwatkins/npm-typescript-package-template/tree/main/docs/releases)
+- [typedoc.json](https://github.com/blwatkins/typescript-color-utils/blob/main/typedoc.json)
+- [gh-pages-jekyll.yml](https://github.com/blwatkins/typescript-color-utils/blob/main/.github/workflows/gh-pages-jekyll.yml)
+- [docs/index.md](https://github.com/blwatkins/typescript-color-utils/blob/main/docs/index.md)
+- [docs/releases directory](https://github.com/blwatkins/typescript-color-utils/tree/main/docs/releases)
 
 ### Security scanning and dependency update automation
 
@@ -123,13 +123,13 @@ Dependency updates are automated with Dependabot for npm, GitHub Actions, and Bu
 
 **Evidence:**
 
-- [codeql.yml](https://github.com/blwatkins/npm-typescript-package-template/blob/main/.github/workflows/codeql.yml)
-- [dependabot.yml](https://github.com/blwatkins/npm-typescript-package-template/blob/main/.github/dependabot.yml)
-- [package-publish.yml](https://github.com/blwatkins/npm-typescript-package-template/blob/main/.github/workflows/package-publish.yml)
+- [codeql.yml](https://github.com/blwatkins/typescript-color-utils/blob/main/.github/workflows/codeql.yml)
+- [dependabot.yml](https://github.com/blwatkins/typescript-color-utils/blob/main/.github/dependabot.yml)
+- [package-publish.yml](https://github.com/blwatkins/typescript-color-utils/blob/main/.github/workflows/package-publish.yml)
 
 ## Current Gaps / Future Improvements
 
-- The template ships only an example `HelloWorld` module; real package logic is intentionally left to the consumer.
+- The project ships only an example `HelloWorld` module; real package logic is intentionally left to the consumer.
 - Release documentation under `docs/releases/` is organized and maintained manually, with no automated changelog or release-notes generation.
 - Automated tests cover only the example module and are meant as a starting pattern rather than comprehensive coverage.
 - Publishing is triggered manually; there is no fully automated release-on-tag pipeline by design.
