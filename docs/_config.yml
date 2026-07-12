@@ -20,12 +20,12 @@ minima:
   hide_site_feed_link: true
   show_excerpts: false
   social_links:
-    - title: "@blwatkins/template"
+    - title: "@blwatkins/color-utils"
       icon: npm
-      url: "#"
+      url: "https://www.npmjs.com/package/@blwatkins/color-utils"
     - title: "Source Code"
       icon: git-alt
-      url: "https://github.com/blwatkins/npm-typescript-package-template"
+      url: "https://github.com/blwatkins/typescript-color-utils"
     - title: "GitHub Pages"
       icon: square-github
       url: "https://blwatkins.github.io/"
@@ -41,8 +41,8 @@ minima:
   nav_pages:
     - index.md
 
-title: "npm TypeScript Package Template"
-description: "A template project for creating a TypeScript package for npm."
+title: "TypeScript Color Utilities"
+description: "A toolkit of library-agnostic TypeScript and JavaScript utilities for creating and managing colors."
 show_downloads: true
 
 sass:
