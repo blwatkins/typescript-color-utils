@@ -15,7 +15,7 @@ Updates to `CLAUDE.md` should be reflected, when appropriate, in `.github/copilo
 
 ## Project Summary
 
-A template project for creating a TypeScript package for npm.
+A toolkit of library-agnostic TypeScript and JavaScript utilities for creating and managing colors.
 
 ## npm Commands
 
