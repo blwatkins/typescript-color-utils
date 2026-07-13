@@ -6,6 +6,7 @@
   },
 
   "entryPoints": [
+    "./src/discriminator/index.ts"
   ],
 
   "out": "./_doc",
