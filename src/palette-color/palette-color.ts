@@ -17,3 +17,37 @@
  * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+
+import { Type, type Static } from 'typebox';
+
+import { discriminatedSchema } from '@blwatkins/utils';
+
+import { Discriminators } from '../discriminator';
+
+/**
+ * TypeBox schema to validate a {@link PaletteColor} object.
+ *
+ * @since 0.1.0
+ */
+export const paletteColorSchema = Type.Intersect([
+    discriminatedSchema,
+    Type.Object(
+        {
+            /**
+             * The discriminator for the palette color object.
+             *
+             * @type {Discriminators.PaletteColor}
+             * @readonly
+             */
+            discriminator: Type.Readonly(Type.Literal(Discriminators.PaletteColor))
+        },
+        { additionalProperties: false }
+    )
+]);
+
+/**
+ * Interface for a palette color object.
+ *
+ * @since 0.1.0
+ */
+export type PaletteColor = Static<typeof paletteColorSchema>;
