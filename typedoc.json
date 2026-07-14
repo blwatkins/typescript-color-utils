@@ -6,7 +6,8 @@
   },
 
   "entryPoints": [
-    "./src/discriminator/index.ts"
+    "./src/discriminator/index.ts",
+    "./src/palette-color/index.ts"
   ],
 
   "out": "./_doc",
@@ -40,6 +41,10 @@
     "notExported": true,
     "invalidLink": true,
     "notDocumented": true
+  },
+
+  "externalSymbolLinkMappings": {
+    "@blwatkins/utils": { "Discriminated": "#" }
   },
 
   "intentionallyNotDocumented": [],
