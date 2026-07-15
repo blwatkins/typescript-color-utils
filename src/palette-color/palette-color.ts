@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2026 Brittni Watkins.
+ * Copyright (c) 2024-2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -20,7 +20,7 @@
 
 import { Type, type Static } from 'typebox';
 
-import { discriminatedSchema } from '@blwatkins/utils';
+import { ColorStringUtility, discriminatedSchema, StringUtility } from '@blwatkins/utils';
 
 import { Discriminators } from '../discriminator';
 
@@ -33,6 +33,19 @@ export const paletteColorSchema = Type.Intersect([
     discriminatedSchema,
     Type.Object(
         {
+            hex: Type.Readonly(Type.String({
+                pattern: ColorStringUtility.hexColorPatternRGB
+            })),
+
+            name: Type.Readonly(Type.String({
+                pattern: StringUtility.singleLineTrimmedPattern
+            })),
+
+            luminance: Type.Optional(Type.Readonly(Type.Number({
+                minimum: 0,
+                maximum: 1
+            }))),
+
             /**
              * The discriminator for the palette color object.
              *
