@@ -53,10 +53,17 @@ export class PaletteColorUtility {
      * @type {(unknown) => input is PaletteColor}
      * @since 0.1.0
      */
-    public readonly isPaletteColor: (input: unknown) => input is PaletteColor = DiscriminatorRegistry.register<PaletteColor>({
+    public static readonly isPaletteColor: (input: unknown) => input is PaletteColor = DiscriminatorRegistry.register<PaletteColor>({
         discriminator: Discriminators.PaletteColor,
         validator: (input: unknown): input is PaletteColor => {
             return Value.Check(paletteColorSchema, input);
         }
     });
+
+    public static validate(input: unknown): input is PaletteColor {
+        // TODO - Are the hex, RBG, and HSL of the palette color constant, if present.
+        // TODO - Should this be called in isPaletteColor, or should they be called separate?
+        console.log(input);
+        return false;
+    }
 }
