@@ -63,6 +63,7 @@ export class PaletteColorUtility {
     public static validate(input: unknown): input is PaletteColor {
         // TODO - Are the hex, RBG, and HSL of the palette color constant, if present.
         // TODO - Should this be called in isPaletteColor, or should they be called separate?
+        // TODO - [BLOCKED] Requires ColorModeConverter class
         console.log(input);
         return false;
     }
