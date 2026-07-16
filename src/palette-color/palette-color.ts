@@ -20,9 +20,10 @@
 
 import { Type, type Static } from 'typebox';
 
-import { ColorStringUtility, StringUtility, discriminatedSchema } from '@blwatkins/utils';
+import { StringUtility, discriminatedSchema } from '@blwatkins/utils';
 
 import { Discriminators } from '../discriminator';
+import { ColorStringUtility } from '../string';
 
 /**
  * TypeBox schema to validate a {@link PaletteColor} object.
