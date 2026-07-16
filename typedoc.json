@@ -7,7 +7,6 @@
 
   "entryPoints": [
     "./src/discriminator/index.ts",
-    "./src/palette-color/index.ts",
     "./src/string/index.ts"
   ],
 
