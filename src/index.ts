@@ -19,5 +19,4 @@
  */
 
 export * from './discriminator';
-export * from './palette-color';
 export * from './string';
