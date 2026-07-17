@@ -70,6 +70,18 @@ export class ColorModeConverter {
         return ColorModeConverter.#rgbComponentsToHex(a, b, c);
     }
 
+    public static rgbToStyleString(a: number, b?: number, c?: number): string {
+        ColorModeConverter.#validateRGBInput(a, b, c, true);
+
+        if (!NumberUtility.isFiniteNumber(b) || !NumberUtility.isFiniteNumber(c)) {
+            return ColorModeConverter.#grayComponentToStyleString(a);
+        }
+
+        ColorModeConverter.#validateRGBInput(a, b, c, false);
+
+        return ColorModeConverter.#rgbComponentsToStyleString(a, b, c);
+    }
+
     /**
      * Validate an RGB input.
      *
@@ -109,34 +121,78 @@ export class ColorModeConverter {
      * @private
      */
     static #grayComponentToHex(gray: number): string {
-        if (gray < 0) gray = 0;
-        if (gray > 255) gray = 255;
+        const g: number = ColorModeConverter.#constrainGrayscale(gray);
+        return chroma(g, g, g).hex('rgb').toUpperCase();
+    }
 
-        return chroma(gray, gray, gray).hex('rgb').toUpperCase();
+    /**
+     * Convert a grayscale component RGB color to a CSS style string.
+     *
+     * @param {number} gray - The grayscale color (0-255) to convert.
+     * This value will be constrained to the range 0-255.
+     *
+     * @returns {string} - The CSS style string that represents the given color.
+     *
+     * @private
+     */
+    static #grayComponentToStyleString(gray: number): string {
+        const g: number = ColorModeConverter.#constrainGrayscale(gray);
+        return chroma(g, g, g).css();
     }
 
     /**
      * Converts an RGB component color to a hex color string.
      *
-     * @param {number} red - The red component (0-255) to convert.
+     * @param {number} r - The red component (0-255) to convert.
      * This value will be constrained to the range 0-255.
-     * @param {number} green - The green component (0-255) to convert.
+     * @param {number} g - The green component (0-255) to convert.
      * This value will be constrained to the range 0-255.
-     * @param {number} blue - The blue component (0-255) to convert.
+     * @param {number} b - The blue component (0-255) to convert.
      * This value will be constrained to the range 0-255.
      *
      * @returns {string} - The hex color string that represents the given color.
      *
      * @private
      */
-    static #rgbComponentsToHex(red: number, green: number, blue: number): string {
-        if (red < 0) red = 0;
-        if (green < 0) green = 0;
-        if (blue < 0) blue = 0;
-        if (red > 255) red = 255;
-        if (green > 255) green = 255;
-        if (blue > 255) blue = 255;
-
+    static #rgbComponentsToHex(r: number, g: number, b: number): string {
+        const { red, green, blue } = ColorModeConverter.#constrainRGB(r, g, b);
         return chroma(red, green, blue).hex('rgb').toUpperCase();
+    }
+
+    /**
+     * Converts an RGB component color to a CSS style string.
+     *
+     * @param {number} r - The red component (0-255) to convert.
+     * This value will be constrained to the range 0-255.
+     * @param {number} g - The green component (0-255) to convert.
+     * This value will be constrained to the range 0-255.
+     * @param {number} b - The blue component (0-255) to convert.
+     * This value will be constrained to the range 0-255.
+     *
+     * @returns {string} - The CSS style string that represents the given color.
+     *
+     * @private
+     */
+    static #rgbComponentsToStyleString(r: number, g: number, b: number): string {
+        const { red, green, blue } = ColorModeConverter.#constrainRGB(r, g, b);
+        return chroma(red, green, blue).css();
+    }
+
+    static #constrainToRange(value: number, min: number, max: number): number {
+        if (value < min) return min;
+        if (value > max) return max;
+        return value;
+    }
+
+    static #constrainRGB(red: number, green: number, blue: number): { red: number; green: number; blue: number; } {
+        return {
+            red: ColorModeConverter.#constrainToRange(red, 0, 255),
+            green: ColorModeConverter.#constrainToRange(green, 0, 255),
+            blue: ColorModeConverter.#constrainToRange(blue, 0, 255)
+        };
+    }
+
+    static #constrainGrayscale(gray: number): number {
+        return ColorModeConverter.#constrainToRange(gray, 0, 255);
     }
 }
