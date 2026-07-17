@@ -6,6 +6,7 @@
   },
 
   "entryPoints": [
+    "./src/color-mode/index.ts",
     "./src/discriminator/index.ts",
     "./src/string/index.ts"
   ],
