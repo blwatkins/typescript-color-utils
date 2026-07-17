@@ -22,6 +22,11 @@ import chroma from 'chroma-js';
 
 import { NumberUtility } from '@blwatkins/utils';
 
+/**
+ * Static properties and methods for converting between color modes.
+ *
+ * @since 0.1.0
+ */
 export class ColorModeConverter {
     /**
      * Private constructor.
@@ -34,6 +39,25 @@ export class ColorModeConverter {
         throw new Error('ColorModeConverter is a static class and cannot be instantiated.');
     }
 
+    /**
+     * Convert RGB color components to a hex color string.
+     *
+     * @param {number} a - The red component (0-255) or grayscale value (0-255) of the given color.
+     * This value will be constrained to the range 0-255.
+     * @param {number|undefined} b - The green component (0-255) of the given color.
+     * This value will be constrained to the range 0-255.
+     * @param {number|undefined} c - The blue component (0-255) of the given color.
+     * This value will be constrained to the range 0-255.
+     *
+     * @returns {string} - The hex color string that represents the given color.
+     * This string will always be returned with uppercase letters and will always be in the 6-digit format (#RRGGBB).
+     *
+     * @throws {TypeError} - When `a` is not a finite number for a grayscale color.
+     * @throws {TypeError} - When any of `a`, `b`, or `c` are not finite numbers for an RGB color.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public static rgbToHex(a: number, b?: number, c?: number): string {
         ColorModeConverter.#validateRGBInput(a, b, c, true);
 
@@ -46,6 +70,22 @@ export class ColorModeConverter {
         return ColorModeConverter.#rgbComponentsToHex(a, b, c);
     }
 
+    /**
+     * Validate an RGB input.
+     *
+     * @param {unknown} a - The red component or grayscale value to validate.
+     * @param {unknown} b - The green component to validate.
+     * @param {unknown} c - The blue component to validate.
+     * @param {boolean} isGrayscale - `true` if the input should be validated as a grayscale color.
+     * `false` if the input should be validated as an RGB color.
+     *
+     * @returns {void}
+     *
+     * @throws {TypeError} - When `a` is not a finite number for a grayscale color.
+     * @throws {TypeError} - When any of `a`, `b`, or `c` are not finite numbers for an RGB color.
+     *
+     * @private
+     */
     static #validateRGBInput(a: unknown, b: unknown, c: unknown, isGrayscale: boolean): void {
         if (isGrayscale) {
             if (!NumberUtility.isFiniteNumber(a)) {
@@ -58,6 +98,16 @@ export class ColorModeConverter {
         }
     }
 
+    /**
+     * Convert a grayscale component RGB color to a hex color string.
+     *
+     * @param {number} gray - The grayscale color (0-255) to convert.
+     * This value will be constrained to the range 0-255.
+     *
+     * @returns {string} - The hex color string that represents the given color.
+     *
+     * @private
+     */
     static #grayComponentToHex(gray: number): string {
         if (gray < 0) gray = 0;
         if (gray > 255) gray = 255;
@@ -65,6 +115,20 @@ export class ColorModeConverter {
         return chroma(gray, gray, gray).hex('rgb').toUpperCase();
     }
 
+    /**
+     * Converts an RGB component color to a hex color string.
+     *
+     * @param {number} red - The red component (0-255) to convert.
+     * This value will be constrained to the range 0-255.
+     * @param {number} green - The green component (0-255) to convert.
+     * This value will be constrained to the range 0-255.
+     * @param {number} blue - The blue component (0-255) to convert.
+     * This value will be constrained to the range 0-255.
+     *
+     * @returns {string} - The hex color string that represents the given color.
+     *
+     * @private
+     */
     static #rgbComponentsToHex(red: number, green: number, blue: number): string {
         if (red < 0) red = 0;
         if (green < 0) green = 0;
