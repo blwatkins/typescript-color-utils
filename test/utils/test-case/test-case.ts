@@ -17,3 +17,24 @@
  * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+
+export interface TestCase {
+    readonly input: unknown;
+    readonly expected: unknown;
+}
+
+export interface Scenario {
+    readonly label: string;
+    readonly inputs: unknown[];
+    readonly expected: unknown;
+}
+
+export interface SingleInputScenario {
+    readonly label: string;
+    readonly input: unknown;
+    readonly expected: unknown;
+}
+
+export function buildTestCases(testInputs: readonly unknown[], testExpected: unknown): TestCase[] {
+    return testInputs.map((input: unknown): TestCase => ({ input: input, expected: testExpected }));
+}

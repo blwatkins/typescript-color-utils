@@ -6,7 +6,7 @@ author:
   - Claude Code
   - GitHub Copilot
 date: 2026-06-17
-modified_date: 2026-07-12
+modified_date: 2026-07-16
 toc: true
 ---
 
@@ -63,6 +63,14 @@ The repository is maintained at [blwatkins/typescript-color-utils](https://githu
 
 Each technical claim below is backed by a source link to the corresponding implementation or workflow configuration in the project repository.
 
+### Runtime-safe color string validation utilities
+
+Static utility classes expose regular-expression-backed type guards for validating formatted strings (e.g., hex color strings in `#RRGGBB`/`#RRGGBBAA` form) at runtime.
+
+**Evidence:**
+
+- [src/string/color-string-utility.ts](https://github.com/blwatkins/typescript-color-utils/blob/main/src/string/color-string-utility.ts)
+
 ### ESM package contract and artifact layout
 
 The package is configured as ESM and publishes built artifacts from `_dist`, including declaration files and a scoped export map.
@@ -81,7 +89,8 @@ This keeps the package API small while still allowing clear internal organizatio
 **Evidence:**
 
 - [src/index.ts](https://github.com/blwatkins/typescript-color-utils/blob/main/src/index.ts)
-- [src/hello-world/index.ts](https://github.com/blwatkins/typescript-color-utils/blob/main/src/hello-world/index.ts)
+- [src/discriminator/index.ts](https://github.com/blwatkins/typescript-color-utils/blob/main/src/discriminator/index.ts)
+- [src/string/index.ts](https://github.com/blwatkins/typescript-color-utils/blob/main/src/string/index.ts)
 
 ### Strict typing and lint enforcement model
 
@@ -129,7 +138,5 @@ Dependency updates are automated with Dependabot for npm, GitHub Actions, and Bu
 
 ## Current Gaps / Future Improvements
 
-- The project ships only an example `HelloWorld` module; real package logic is intentionally left to the consumer.
 - Release documentation under `docs/releases/` is organized and maintained manually, with no automated changelog or release-notes generation.
-- Automated tests cover only the example module and are meant as a starting pattern rather than comprehensive coverage.
 - Publishing is triggered manually; there is no fully automated release-on-tag pipeline by design.

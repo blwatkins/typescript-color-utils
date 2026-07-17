@@ -72,6 +72,9 @@
     "javascript",
     "esm",
     "color",
-    "utilities"
+    "utilities",
+    "string",
+    "hex-color",
+    "validation"
   ]
 }

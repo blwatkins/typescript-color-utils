@@ -20,9 +20,10 @@
 
 import { Type, type Static } from 'typebox';
 
-import { ColorStringUtility, discriminatedSchema, StringUtility } from '@blwatkins/utils';
+import { StringUtility, discriminatedSchema } from '@blwatkins/utils';
 
 import { Discriminators } from '../discriminator';
+import { ColorStringUtility } from '../string';
 
 /**
  * TypeBox schema to validate a {@link PaletteColor} object.
@@ -45,6 +46,12 @@ export const paletteColorSchema = Type.Intersect([
                 minimum: 0,
                 maximum: 1
             }))),
+
+            // TODO - Create and use RGB typebox schema
+            rgb: Type.Optional(Type.Readonly(Type.Object({}))),
+
+            // TODO - Create and use HSL typebox schema
+            hsl: Type.Optional(Type.Readonly(Type.Object({}))),
 
             /**
              * The discriminator for the palette color object.
