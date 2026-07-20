@@ -58,6 +58,7 @@ export const paletteColorSchema = Type.Intersect([
              *
              * @type {Discriminators.PaletteColor}
              * @readonly
+             * @since 0.1.0
              */
             discriminator: Type.Readonly(Type.Literal(Discriminators.PaletteColor))
         },
@@ -66,7 +67,7 @@ export const paletteColorSchema = Type.Intersect([
 ]);
 
 /**
- * Interface for a palette color object.
+ * Type definition for a palette color object.
  *
  * @since 0.1.0
  */

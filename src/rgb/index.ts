@@ -18,23 +18,4 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/**
- * Valid discriminators for package types and interfaces.
- *
- * @since 0.1.0
- */
-export enum Discriminators {
-    /**
-     * Discriminator value for the PaletteColor type.
-     *
-     * @since 0.1.0
-     */
-    PaletteColor = '@blwatkins/color-utils:PaletteColor',
-
-    /**
-     * Discriminator value for the RGB type.
-     *
-     * @since 0.1.0
-     */
-    RGB = '@blwatkins/color-utils:RGB'
-}
+export * from './rgb';
