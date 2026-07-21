@@ -23,6 +23,7 @@ import { Type, type Static } from 'typebox';
 import { StringUtility, discriminatedSchema } from '@blwatkins/utils';
 
 import { Discriminators } from '../discriminator';
+import { rgbSchema } from '../rgb';
 import { ColorStringUtility } from '../string';
 
 /**
@@ -47,8 +48,7 @@ export const paletteColorSchema = Type.Intersect([
                 maximum: 1
             }))),
 
-            // TODO - Create and use RGB typebox schema
-            rgb: Type.Optional(Type.Readonly(Type.Object({}))),
+            rgb: Type.Optional(Type.Readonly(rgbSchema)),
 
             // TODO - Create and use HSL typebox schema
             hsl: Type.Optional(Type.Readonly(Type.Object({}))),
