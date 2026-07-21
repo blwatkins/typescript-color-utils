@@ -30,7 +30,7 @@ import { Discriminators } from '../discriminator';
  * @type {0}
  * @since 0.1.0
  */
-export const minRgbValue: 0 = 0;
+export const minRgbValue: 0 = 0 as const;
 
 /**
  * Maximum value for an RGB component.
@@ -38,7 +38,7 @@ export const minRgbValue: 0 = 0;
  * @type {255}
  * @since 0.1.0
  */
-export const maxRgbValue: 255 = 255;
+export const maxRgbValue: 255 = 255 as const;
 
 /**
  * TypeBox schema to validate a {@link RGB} object.

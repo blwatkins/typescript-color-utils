@@ -18,10 +18,13 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {RGB, rgbSchema} from "./rgb";
-import Value from "typebox/value";
-import {Discriminators} from "../discriminator";
-import {DiscriminatorRegistry} from "@blwatkins/utils";
+import Value from 'typebox/value';
+
+import { DiscriminatorRegistry } from '@blwatkins/utils';
+
+import { Discriminators } from '../discriminator';
+
+import { RGB, rgbSchema } from './rgb';
 
 export class RGBUtility {
     /**
