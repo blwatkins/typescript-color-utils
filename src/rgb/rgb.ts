@@ -19,9 +19,26 @@
  */
 
 import { Type, type Static } from 'typebox';
+
 import { discriminatedSchema } from '@blwatkins/utils';
 
 import { Discriminators } from '../discriminator';
+
+/**
+ * Minimum value for an RGB component.
+ *
+ * @type {0}
+ * @since 0.1.0
+ */
+export const minRgbValue: 0 = 0;
+
+/**
+ * Maximum value for an RGB component.
+ *
+ * @type {255}
+ * @since 0.1.0
+ */
+export const maxRgbValue: 255 = 255;
 
 /**
  * TypeBox schema to validate a {@link RGB} object.
@@ -41,8 +58,8 @@ export const rgbSchema = Type.Intersect([
              * @since 0.1.0
              */
             red: Type.Readonly(Type.Number({
-                minimum: 0,
-                maximum: 255
+                minimum: minRgbValue,
+                maximum: maxRgbValue
             })),
 
             /**
@@ -54,8 +71,8 @@ export const rgbSchema = Type.Intersect([
              * @since 0.1.0
              */
             green: Type.Readonly(Type.Number({
-                minimum: 0,
-                maximum: 255
+                minimum: minRgbValue,
+                maximum: maxRgbValue
             })),
 
             /**
@@ -67,8 +84,8 @@ export const rgbSchema = Type.Intersect([
              * @since 0.1.0
              */
             blue: Type.Readonly(Type.Number({
-                minimum: 0,
-                maximum: 255
+                minimum: minRgbValue,
+                maximum: maxRgbValue
             })),
 
             /**
@@ -79,9 +96,9 @@ export const rgbSchema = Type.Intersect([
              * @readonly
              * @since 0.1.0
              */
-            a: Type.Optional(Type.Readonly(Type.Number({
-                minimum: 0,
-                maximum: 255
+            alpha: Type.Optional(Type.Readonly(Type.Number({
+                minimum: minRgbValue,
+                maximum: maxRgbValue
             }))),
 
             /**
