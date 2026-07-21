@@ -40,4 +40,8 @@ export class RGBUtility {
             return Value.Check(rgbSchema, input);
         }
     });
+
+    public static toString(rgb: RGB): string {
+        return JSON.stringify(rgb);
+    }
 }
