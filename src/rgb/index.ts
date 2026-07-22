@@ -19,3 +19,5 @@
  */
 
 export * from './rgb';
+export * from './rgb-builder';
+export * from './rgb-utility';
