@@ -31,23 +31,23 @@ export class RGBBuilder {
     #alpha: number | undefined = undefined;
 
     public setRed(red: number): this {
-        this.#red = MathUtility.constrain(red, minRgbValue, maxRgbValue);
+        this.#red = Math.floor(MathUtility.constrain(red, minRgbValue, maxRgbValue));
         return this;
     }
 
     public setGreen(green: number): this {
-        this.#green = MathUtility.constrain(green, minRgbValue, maxRgbValue);
+        this.#green = Math.floor(MathUtility.constrain(green, minRgbValue, maxRgbValue));
         return this;
     }
 
     public setBlue(blue: number): this {
-        this.#blue = MathUtility.constrain(blue, minRgbValue, maxRgbValue);
+        this.#blue = Math.floor(MathUtility.constrain(blue, minRgbValue, maxRgbValue));
         return this;
     }
 
     public setAlpha(alpha: number | undefined): this {
         if (alpha) {
-            this.#alpha = MathUtility.constrain(alpha, minRgbValue, maxRgbValue);
+            this.#alpha = Math.floor(MathUtility.constrain(alpha, minRgbValue, maxRgbValue));
         } else {
             this.#alpha = undefined;
         }

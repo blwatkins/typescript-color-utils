@@ -19,13 +19,56 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import { RGB, RGBBuilder, RGBUtility } from '../../src';
+import {maxRgbValue, minRgbValue, RGB, RGBBuilder, RGBUtility} from '../../src';
 
 describe('RGBBuilder', (): void => {
     describe('setRed', (): void => {
         test('setRed should return the builder object', (): void => {
            const builder = new RGBBuilder();
            expect(builder.setRed(5)).toEqual(builder);
+        });
+
+        test('setRed should constrain numeric parameters between 0 and 255', (): void => {
+            const builder = new RGBBuilder();
+
+            const minRGB: RGB = builder.setRed(-500).build();
+            expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
+            expect(minRGB.red).toBe(minRgbValue);
+
+            const maxRGB: RGB = builder.setRed(500).build();
+            expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
+            expect(maxRGB.red).toBe(maxRgbValue);
+        });
+
+        test('setRed should red to an integer value', (): void => {
+            const builder = new RGBBuilder();
+            const red: 42.1234 = 42.1234 as const;
+            const expectedRed: 42 = 42 as const;
+            const rgb: RGB = builder.setRed(red).build();
+            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+            expect(rgb.red).toBe(expectedRed);
+        });
+    });
+
+    describe('setGreen', (): void => {
+        test('setGreen should return the builder object', (): void => {
+            const builder = new RGBBuilder();
+            expect(builder.setGreen(5)).toEqual(builder);
+        });
+    });
+
+    describe('setBlue', (): void => {
+        test('setBlue should return the builder object', (): void => {
+            const builder = new RGBBuilder();
+            expect(builder.setBlue(5)).toEqual(builder);
+        });
+    });
+
+    describe('setAlpha', (): void => {
+        test('setAlpha should return the builder object', (): void => {
+            const builder = new RGBBuilder();
+            expect(builder.setAlpha(5)).toEqual(builder);
+            expect(builder.setAlpha(undefined)).toEqual(builder);
         });
     });
 
@@ -67,4 +110,6 @@ describe('RGBBuilder', (): void => {
             expect(rgb.alpha).toBe(alpha);
         });
     });
+
+    test.todo('Input validation - numeric types');
 });

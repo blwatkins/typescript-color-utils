@@ -51,52 +51,52 @@ export const rgbSchema = Type.Intersect([
         {
             /**
              * The red component of the RGB color.
-             * Must be a value between 0 and 255.
+             * Must be an integer between 0 and 255.
              *
              * @type {number}
              * @readonly
              * @since 0.1.0
              */
-            red: Type.Readonly(Type.Number({
+            red: Type.Readonly(Type.Integer({
                 minimum: minRgbValue,
                 maximum: maxRgbValue
             })),
 
             /**
              * The green component of the RGB color.
-             * Must be a value between 0 and 255.
+             * Must be an integer between 0 and 255.
              *
              * @type {number}
              * @readonly
              * @since 0.1.0
              */
-            green: Type.Readonly(Type.Number({
+            green: Type.Readonly(Type.Integer({
                 minimum: minRgbValue,
                 maximum: maxRgbValue
             })),
 
             /**
              * The blue component of the RGB color.
-             * Must be a value between 0 and 255.
+             * Must be an integer between 0 and 255.
              *
              * @type {number}
              * @readonly
              * @since 0.1.0
              */
-            blue: Type.Readonly(Type.Number({
+            blue: Type.Readonly(Type.Integer({
                 minimum: minRgbValue,
                 maximum: maxRgbValue
             })),
 
             /**
              * The optional alpha component of the RGB color.
-             * Must be a value between 0 and 255.
+             * When present, must be an integer between 0 and 255.
              *
              * @type {number | undefined}
              * @readonly
              * @since 0.1.0
              */
-            alpha: Type.Optional(Type.Readonly(Type.Number({
+            alpha: Type.Optional(Type.Readonly(Type.Integer({
                 minimum: minRgbValue,
                 maximum: maxRgbValue
             }))),
