@@ -1,5 +1,14 @@
 ---
+title: "Resources and References"
+layout: post
+author:
+  - Brittni Watkins
+date: 2026-07-20
+modified_date: 2026-07-21
+toc: true
 ---
+
+## Languages
 
 ### JavaScript
 
