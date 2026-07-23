@@ -124,10 +124,36 @@ export class RGBBuilder {
         return this;
     }
 
+    /**
+     * Set the red, green, and blue components of the {@link RGB} object for a grayscale color.
+     *
+     * @param {number} gray - The component value for red, green, and blue.
+     * This value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {TypeError} - When the given value is not a finite number or undefined.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public setGray(gray: number): this {
         return this.setRed(gray).setGreen(gray).setBlue(gray);
     }
 
+    /**
+     * Set the optional alpha component of the {@link RGB} object.
+     *
+     * @param {number|undefined} alpha - The alpha component value.
+     * When not `undefined`, this value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {TypeError} - When the given value is not a finite number or undefined.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public setAlpha(alpha: number | undefined): this {
         if (alpha === undefined) {
             this.#alpha = undefined;
