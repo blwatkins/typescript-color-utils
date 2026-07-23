@@ -242,6 +242,10 @@ export default defineConfig([
             '@typescript-eslint/restrict-template-expressions': ['error', {
                 allowNumber: true,
                 allowBoolean: true
+            }],
+
+            '@typescript-eslint/unified-signatures': ['error', {
+                ignoreDifferentlyNamedParameters: true
             }]
         }
     },
