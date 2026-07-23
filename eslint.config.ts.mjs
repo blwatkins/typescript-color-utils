@@ -245,7 +245,7 @@ export default defineConfig([
             }],
 
             '@typescript-eslint/unified-signatures': ['error', {
-                ignoreDifferentlyNamedParameters: true
+                ignoreOverloadsWithDifferentJSDoc: true
             }]
         }
     },
