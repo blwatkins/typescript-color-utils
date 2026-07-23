@@ -114,7 +114,7 @@ export const rgbSchema = Type.Intersect([
 ]);
 
 /**
- * Type definition for an rgb color object.
+ * Type definition for an RGB color object.
  *
  * @since 0.1.0
  */
