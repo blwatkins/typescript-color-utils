@@ -50,10 +50,10 @@ export class RGBBuilder {
     }
 
     public setAlpha(alpha: number | undefined): this {
-        if (alpha) {
-            this.#alpha = Math.floor(MathUtility.constrain(alpha, minRgbValue, maxRgbValue));
-        } else {
+        if (alpha === undefined) {
             this.#alpha = undefined;
+        } else {
+            this.#alpha = Math.floor(MathUtility.constrain(alpha, minRgbValue, maxRgbValue));
         }
 
         return this;
@@ -69,7 +69,7 @@ export class RGBBuilder {
         };
     }
 
-    public static buildFrom(red: number, blue: number, green: number, alpha?: number): RGB {
+    public static buildFrom(red: number, green: number, blue: number, alpha?: number): RGB {
         return (new RGBBuilder()).setRed(red).setGreen(green).setBlue(blue).setAlpha(alpha).build();
     }
 }

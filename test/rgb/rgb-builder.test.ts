@@ -19,7 +19,11 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import { maxRgbValue, minRgbValue, RGB, RGBBuilder, RGBUtility } from '../../src';
+
+import { RGB, RGBBuilder, RGBUtility, maxRgbValue, minRgbValue } from '../../src';
+
+import { nonFiniteNumberInputs, nonNumberInputs } from '../utils/input/number-inputs';
+import { Scenario, TestCase, buildTestCases } from '../utils/test-case/test-case';
 
 describe('RGBBuilder', (): void => {
     describe('setRed', (): void => {
@@ -218,5 +222,192 @@ describe('RGBBuilder', (): void => {
         });
     });
 
-    test.todo('Input validation - numeric types');
+    describe('buildFrom', (): void => {
+        test('buildFrom should return an RGB object with set RGB values', (): void => {
+            const red: 25 = 25 as const;
+            const green: 75 = 75 as const;
+            const blue: 125 = 125 as const;
+            const rgb: RGB = RGBBuilder.buildFrom(red, green, blue);
+            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+            expect(rgb.red).toBe(red);
+            expect(rgb.green).toBe(green);
+            expect(rgb.blue).toBe(blue);
+            expect(rgb.alpha).toBeUndefined();
+        });
+
+        test('buildFrom should return an RGB object with set RGBA values when alpha is undefined', (): void => {
+            const red: 35 = 35 as const;
+            const green: 85 = 85 as const;
+            const blue: 135 = 135 as const;
+            const alpha: undefined = undefined;
+            const rgb: RGB = RGBBuilder.buildFrom(red, green, blue, alpha);
+            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+            expect(rgb.red).toBe(red);
+            expect(rgb.green).toBe(green);
+            expect(rgb.blue).toBe(blue);
+            expect(rgb.alpha).toBe(alpha);
+        });
+
+        test('buildFrom should return an RGBA object with set RGBA values', (): void => {
+            const red: 175 = 175 as const;
+            const green: 125 = 125 as const;
+            const blue: 75 = 75 as const;
+            const alpha: 25 = 25 as const;
+            const rgb: RGB = RGBBuilder.buildFrom(red, green, blue, alpha);
+            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+            expect(rgb.red).toBe(red);
+            expect(rgb.green).toBe(green);
+            expect(rgb.blue).toBe(blue);
+            expect(rgb.alpha).toBe(alpha);
+        });
+    });
+
+    describe('Input validation', (): void => {
+        describe('Invalid inputs should throw an error', (): void => {
+            const scenarios: Scenario[] = [
+                {
+                    label: 'Non-number inputs',
+                    inputs: [...nonNumberInputs],
+                    expected: TypeError
+                },
+                {
+                    label: 'Non-finite number inputs',
+                    inputs: [...nonFiniteNumberInputs],
+                    expected: TypeError
+                }
+            ];
+
+            describe.each(
+                scenarios
+            )('%# - $label', ({ inputs: scenarioInputs, expected: scenarioExpected }: Scenario): void => {
+                const testCases: TestCase[] = buildTestCases(scenarioInputs, scenarioExpected);
+
+                describe('setRed', (): void => {
+                    test.each(
+                        testCases
+                    )('%# - setRed($input) should throw $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
+                        expect((): void => {
+                            const builder = new RGBBuilder();
+                            builder.setRed(testInput as number);
+                        }).toThrow(testExpected);
+                    });
+                });
+
+                describe('setGreen', (): void => {
+                    test.each(
+                        testCases
+                    )('%# - setGreen($input) should throw $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
+                        expect((): void => {
+                            const builder = new RGBBuilder();
+                            builder.setGreen(testInput as number);
+                        }).toThrow(testExpected);
+                    });
+                });
+
+                describe('setBlue', (): void => {
+                    test.each(
+                        testCases
+                    )('%# - setBlue($input) should throw $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
+                        expect((): void => {
+                            const builder = new RGBBuilder();
+                            builder.setBlue(testInput as number);
+                        }).toThrow(testExpected);
+                    });
+                });
+
+                describe('setGray', (): void => {
+                    test.each(
+                        testCases
+                    )('%# - setGray($input) should throw $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
+                        expect((): void => {
+                            const builder = new RGBBuilder();
+                            builder.setGray(testInput as number);
+                        }).toThrow(testExpected);
+                    });
+                });
+
+                describe('setAlpha', (): void => {
+                    test.each(
+                        testCases.filter((input: TestCase): boolean => input.input !== undefined)
+                    )('%# - setAlpha($input) should throw $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
+                        expect((): void => {
+                            const builder = new RGBBuilder();
+                            builder.setAlpha(testInput as number);
+                        }).toThrow(testExpected);
+                    });
+                });
+
+                describe('buildFrom', (): void => {
+                    const defaultRed: number = 10;
+                    const defaultGreen: number = 20;
+                    const defaultBlue: number = 30;
+                    const defaultAlpha: number = 40;
+
+                    describe('red parameter', (): void => {
+                        test.each(
+                            testCases.filter((input: TestCase): boolean => input.input !== undefined)
+                        )(`%# - buildFrom($input, ${defaultGreen}, ${defaultBlue}, ${defaultAlpha}/undefined) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            expect((): void => {
+                                RGBBuilder.buildFrom(testInput as number, defaultGreen, defaultBlue, defaultAlpha);
+                            }).toThrow(testExpected);
+
+                            expect((): void => {
+                                RGBBuilder.buildFrom(testInput as number, defaultGreen, defaultBlue, undefined);
+                            }).toThrow(testExpected);
+
+                            expect((): void => {
+                                RGBBuilder.buildFrom(testInput as number, defaultGreen, defaultBlue);
+                            }).toThrow(testExpected);
+                        });
+                    });
+
+                    describe('green parameter', (): void => {
+                        test.each(
+                            testCases.filter((input: TestCase): boolean => input.input !== undefined)
+                        )(`%# - buildFrom(${defaultRed}, $input, ${defaultBlue}, ${defaultAlpha}/undefined) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            expect((): void => {
+                                RGBBuilder.buildFrom(defaultRed, testInput as number, defaultBlue, defaultAlpha);
+                            }).toThrow(testExpected);
+
+                            expect((): void => {
+                                RGBBuilder.buildFrom(defaultRed, testInput as number, defaultBlue, undefined);
+                            }).toThrow(testExpected);
+
+                            expect((): void => {
+                                RGBBuilder.buildFrom(defaultRed, testInput as number, defaultBlue);
+                            }).toThrow(testExpected);
+                        });
+                    });
+
+                    describe('blue parameter', (): void => {
+                        test.each(
+                            testCases.filter((input: TestCase): boolean => input.input !== undefined)
+                        )(`%# - buildFrom(${defaultRed}, ${defaultGreen}, $input, ${defaultAlpha}/undefined) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            expect((): void => {
+                                RGBBuilder.buildFrom(defaultRed, defaultGreen, testInput as number, defaultAlpha);
+                            }).toThrow(testExpected);
+
+                            expect((): void => {
+                                RGBBuilder.buildFrom(defaultRed, defaultGreen, testInput as number, undefined);
+                            }).toThrow(testExpected);
+
+                            expect((): void => {
+                                RGBBuilder.buildFrom(defaultRed, defaultGreen, testInput as number);
+                            }).toThrow(testExpected);
+                        });
+                    });
+
+                    describe('alpha parameter', (): void => {
+                        test.each(
+                            testCases.filter((input: TestCase): boolean => input.input !== undefined)
+                        )(`%# - buildFrom(${defaultRed}, ${defaultGreen}, ${defaultBlue}, $input) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            expect((): void => {
+                                RGBBuilder.buildFrom(defaultRed, defaultGreen, defaultBlue, testInput as number);
+                            }).toThrow(testExpected);
+                        });
+                    });
+                });
+            });
+        });
+    });
 });
