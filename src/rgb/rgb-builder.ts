@@ -24,10 +24,50 @@ import { Discriminators } from '../discriminator';
 
 import { maxRgbValue, minRgbValue, RGB } from './rgb';
 
+/**
+ * A builder class for creating an {@link RGB} object.
+ *
+ * @since 0.1.0
+ */
 export class RGBBuilder {
+    /**
+     * The red component of the {@link RGB} object.
+     *
+     * @default 0
+     *
+     * @type {number}
+     * @private
+     */
     #red: number = 0;
+
+    /**
+     * The green component of the {@link RGB} object.
+     *
+     * @default 0
+     *
+     * @type {number}
+     * @private
+     */
     #green: number = 0;
+
+    /**
+     * The blue component of the {@link RGB} object.
+     *
+     * @default 0
+     *
+     * @type {number}
+     * @private
+     */
     #blue: number = 0;
+
+    /**
+     * The optional alpha component of the {@link RGB object}.
+     *
+     * @default undefined
+     *
+     * @type {number|undefined}
+     * @private
+     */
     #alpha: number | undefined = undefined;
 
     public setRed(red: number): this {
