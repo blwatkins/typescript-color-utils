@@ -45,6 +45,10 @@ export class RGBBuilder {
         return this;
     }
 
+    public setGray(gray: number): this {
+        return this.setRed(gray).setGreen(gray).setBlue(gray);
+    }
+
     public setAlpha(alpha: number | undefined): this {
         if (alpha) {
             this.#alpha = Math.floor(MathUtility.constrain(alpha, minRgbValue, maxRgbValue));

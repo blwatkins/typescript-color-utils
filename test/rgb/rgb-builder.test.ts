@@ -19,13 +19,13 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import {maxRgbValue, minRgbValue, RGB, RGBBuilder, RGBUtility} from '../../src';
+import { maxRgbValue, minRgbValue, RGB, RGBBuilder, RGBUtility } from '../../src';
 
 describe('RGBBuilder', (): void => {
     describe('setRed', (): void => {
         test('setRed should return the builder object', (): void => {
-           const builder = new RGBBuilder();
-           expect(builder.setRed(5)).toEqual(builder);
+            const builder = new RGBBuilder();
+            expect(builder.setRed(5)).toEqual(builder);
         });
 
         test('setRed should constrain numeric parameters between 0 and 255', (): void => {
@@ -55,12 +55,98 @@ describe('RGBBuilder', (): void => {
             const builder = new RGBBuilder();
             expect(builder.setGreen(5)).toEqual(builder);
         });
+
+        test('setGreen should constrain numeric parameters between 0 and 255', (): void => {
+            const builder = new RGBBuilder();
+
+            const minRGB: RGB = builder.setGreen(-500).build();
+            expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
+            expect(minRGB.green).toBe(minRgbValue);
+
+            const maxRGB: RGB = builder.setGreen(500).build();
+            expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
+            expect(maxRGB.green).toBe(maxRgbValue);
+        });
+
+        test('setGreen should red to an integer value', (): void => {
+            const builder = new RGBBuilder();
+            const green: 41.1234 = 41.1234 as const;
+            const expectedGreen: 41 = 41 as const;
+            const rgb: RGB = builder.setGreen(green).build();
+            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+            expect(rgb.green).toBe(expectedGreen);
+        });
     });
 
     describe('setBlue', (): void => {
         test('setBlue should return the builder object', (): void => {
             const builder = new RGBBuilder();
             expect(builder.setBlue(5)).toEqual(builder);
+        });
+
+        test('setBlue should constrain numeric parameters between 0 and 255', (): void => {
+            const builder = new RGBBuilder();
+
+            const minRGB: RGB = builder.setBlue(-500).build();
+            expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
+            expect(minRGB.blue).toBe(minRgbValue);
+
+            const maxRGB: RGB = builder.setBlue(500).build();
+            expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
+            expect(maxRGB.blue).toBe(maxRgbValue);
+        });
+
+        test('setBlue should red to an integer value', (): void => {
+            const builder = new RGBBuilder();
+            const blue: 40.1234 = 40.1234 as const;
+            const expectedBlue: 40 = 40 as const;
+            const rgb: RGB = builder.setBlue(blue).build();
+            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+            expect(rgb.blue).toBe(expectedBlue);
+        });
+    });
+
+    describe('setGray', (): void => {
+        test('setGray should return the builder object', (): void => {
+            const builder = new RGBBuilder();
+            expect(builder.setGray(5)).toEqual(builder);
+        });
+
+        test('setGray should set the red, green, and blue components of the RGB object', (): void => {
+            const builder = new RGBBuilder();
+            const gray: 10 = 10 as const;
+            const rgb: RGB = builder.setGray(gray).build();
+            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+            expect(rgb.red).toBe(gray);
+            expect(rgb.green).toBe(gray);
+            expect(rgb.blue).toBe(gray);
+        });
+
+        test('setGray should constrain numeric parameters between 0 and 255', (): void => {
+            const builder = new RGBBuilder();
+
+            const minRGB: RGB = builder.setGray(-500).build();
+            expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
+            expect(minRGB.red).toBe(minRgbValue);
+            expect(minRGB.green).toBe(minRgbValue);
+            expect(minRGB.blue).toBe(minRgbValue);
+
+            const maxRGB: RGB = builder.setGray(500).build();
+            expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
+            expect(maxRGB.red).toBe(maxRgbValue);
+            expect(maxRGB.green).toBe(maxRgbValue);
+            expect(maxRGB.blue).toBe(maxRgbValue);
+        });
+
+        test('setGray should red to an integer value', (): void => {
+            const builder = new RGBBuilder();
+            const gray: 38.1234 = 38.1234 as const;
+            const expectedGray: 38 = 38 as const;
+            const rgb: RGB = builder.setGray(gray).build();
+            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+            expect(rgb.red).toBe(expectedGray);
+            expect(rgb.green).toBe(expectedGray);
+            expect(rgb.blue).toBe(expectedGray);
         });
     });
 
@@ -69,6 +155,27 @@ describe('RGBBuilder', (): void => {
             const builder = new RGBBuilder();
             expect(builder.setAlpha(5)).toEqual(builder);
             expect(builder.setAlpha(undefined)).toEqual(builder);
+        });
+
+        test('setAlpha should constrain numeric parameters between 0 and 255', (): void => {
+            const builder = new RGBBuilder();
+
+            const minRGB: RGB = builder.setAlpha(-500).build();
+            expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
+            expect(minRGB.alpha).toBe(minRgbValue);
+
+            const maxRGB: RGB = builder.setAlpha(500).build();
+            expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
+            expect(maxRGB.alpha).toBe(maxRgbValue);
+        });
+
+        test('setAlpha should red to an integer value', (): void => {
+            const builder = new RGBBuilder();
+            const alpha: 39.1234 = 39.1234 as const;
+            const expectedAlpha: 39 = 39 as const;
+            const rgb: RGB = builder.setAlpha(alpha).build();
+            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+            expect(rgb.alpha).toBe(expectedAlpha);
         });
     });
 
