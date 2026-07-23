@@ -20,7 +20,7 @@
 
 import { describe, test, expect } from 'vitest';
 
-import { RGB, RGBBuilder, RGBUtility, maxRgbValue, minRgbValue } from '../../src';
+import { RGB, RGBBuilder, RGBUtility, maxRGBValue, minRGBValue } from '../../src';
 
 import { nonFiniteNumberInputs, nonNumberInputs } from '../utils/input/number-inputs';
 import { Scenario, TestCase, buildTestCases } from '../utils/test-case/test-case';
@@ -37,11 +37,11 @@ describe('RGBBuilder', (): void => {
 
             const minRGB: RGB = builder.setRed(-500).build();
             expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
-            expect(minRGB.red).toBe(minRgbValue);
+            expect(minRGB.red).toBe(minRGBValue);
 
             const maxRGB: RGB = builder.setRed(500).build();
             expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
-            expect(maxRGB.red).toBe(maxRgbValue);
+            expect(maxRGB.red).toBe(maxRGBValue);
         });
 
         test('setRed should red to an integer value', (): void => {
@@ -65,11 +65,11 @@ describe('RGBBuilder', (): void => {
 
             const minRGB: RGB = builder.setGreen(-500).build();
             expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
-            expect(minRGB.green).toBe(minRgbValue);
+            expect(minRGB.green).toBe(minRGBValue);
 
             const maxRGB: RGB = builder.setGreen(500).build();
             expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
-            expect(maxRGB.green).toBe(maxRgbValue);
+            expect(maxRGB.green).toBe(maxRGBValue);
         });
 
         test('setGreen should red to an integer value', (): void => {
@@ -93,11 +93,11 @@ describe('RGBBuilder', (): void => {
 
             const minRGB: RGB = builder.setBlue(-500).build();
             expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
-            expect(minRGB.blue).toBe(minRgbValue);
+            expect(minRGB.blue).toBe(minRGBValue);
 
             const maxRGB: RGB = builder.setBlue(500).build();
             expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
-            expect(maxRGB.blue).toBe(maxRgbValue);
+            expect(maxRGB.blue).toBe(maxRGBValue);
         });
 
         test('setBlue should red to an integer value', (): void => {
@@ -131,15 +131,15 @@ describe('RGBBuilder', (): void => {
 
             const minRGB: RGB = builder.setGray(-500).build();
             expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
-            expect(minRGB.red).toBe(minRgbValue);
-            expect(minRGB.green).toBe(minRgbValue);
-            expect(minRGB.blue).toBe(minRgbValue);
+            expect(minRGB.red).toBe(minRGBValue);
+            expect(minRGB.green).toBe(minRGBValue);
+            expect(minRGB.blue).toBe(minRGBValue);
 
             const maxRGB: RGB = builder.setGray(500).build();
             expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
-            expect(maxRGB.red).toBe(maxRgbValue);
-            expect(maxRGB.green).toBe(maxRgbValue);
-            expect(maxRGB.blue).toBe(maxRgbValue);
+            expect(maxRGB.red).toBe(maxRGBValue);
+            expect(maxRGB.green).toBe(maxRGBValue);
+            expect(maxRGB.blue).toBe(maxRGBValue);
         });
 
         test('setGray should red to an integer value', (): void => {
@@ -166,11 +166,11 @@ describe('RGBBuilder', (): void => {
 
             const minRGB: RGB = builder.setAlpha(-500).build();
             expect(RGBUtility.isRGB(minRGB)).toBeTruthy();
-            expect(minRGB.alpha).toBe(minRgbValue);
+            expect(minRGB.alpha).toBe(minRGBValue);
 
             const maxRGB: RGB = builder.setAlpha(500).build();
             expect(RGBUtility.isRGB(maxRGB)).toBeTruthy();
-            expect(maxRGB.alpha).toBe(maxRgbValue);
+            expect(maxRGB.alpha).toBe(maxRGBValue);
         });
 
         test('setAlpha should red to an integer value', (): void => {

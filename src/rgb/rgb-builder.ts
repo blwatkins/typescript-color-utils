@@ -22,7 +22,7 @@ import { MathUtility } from '@blwatkins/utils';
 
 import { Discriminators } from '../discriminator';
 
-import { maxRgbValue, minRgbValue, RGB } from './rgb';
+import { RGB, maxRGBValue, minRGBValue } from './rgb';
 
 /**
  * A builder class for creating an {@link RGB} object.
@@ -74,7 +74,7 @@ export class RGBBuilder {
      * Set the red component of the {@link RGB} object.
      *
      * @param {number} red - The red component value.
-     * This value will be constrained to {@link minRgbValue} and {@link maxRgbValue}, then floored to the nearest integer.
+     * This value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
      *
      * @returns {this} The current instance of the {@link RGBBuilder} for method chaining.
      *
@@ -82,17 +82,17 @@ export class RGBBuilder {
      * @since 0.1.0
      */
     public setRed(red: number): this {
-        this.#red = Math.floor(MathUtility.constrain(red, minRgbValue, maxRgbValue));
+        this.#red = Math.floor(MathUtility.constrain(red, minRGBValue, maxRGBValue));
         return this;
     }
 
     public setGreen(green: number): this {
-        this.#green = Math.floor(MathUtility.constrain(green, minRgbValue, maxRgbValue));
+        this.#green = Math.floor(MathUtility.constrain(green, minRGBValue, maxRGBValue));
         return this;
     }
 
     public setBlue(blue: number): this {
-        this.#blue = Math.floor(MathUtility.constrain(blue, minRgbValue, maxRgbValue));
+        this.#blue = Math.floor(MathUtility.constrain(blue, minRGBValue, maxRGBValue));
         return this;
     }
 
@@ -104,7 +104,7 @@ export class RGBBuilder {
         if (alpha === undefined) {
             this.#alpha = undefined;
         } else {
-            this.#alpha = Math.floor(MathUtility.constrain(alpha, minRgbValue, maxRgbValue));
+            this.#alpha = Math.floor(MathUtility.constrain(alpha, minRGBValue, maxRGBValue));
         }
 
         return this;

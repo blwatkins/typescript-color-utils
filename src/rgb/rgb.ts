@@ -30,7 +30,7 @@ import { Discriminators } from '../discriminator';
  * @type {0}
  * @since 0.1.0
  */
-export const minRgbValue: 0 = 0 as const;
+export const minRGBValue: 0 = 0 as const;
 
 /**
  * Maximum value for an RGB component.
@@ -38,7 +38,7 @@ export const minRgbValue: 0 = 0 as const;
  * @type {255}
  * @since 0.1.0
  */
-export const maxRgbValue: 255 = 255 as const;
+export const maxRGBValue: 255 = 255 as const;
 
 /**
  * TypeBox schema to validate a {@link RGB} object.
@@ -58,8 +58,8 @@ export const rgbSchema = Type.Intersect([
              * @since 0.1.0
              */
             red: Type.Readonly(Type.Integer({
-                minimum: minRgbValue,
-                maximum: maxRgbValue
+                minimum: minRGBValue,
+                maximum: maxRGBValue
             })),
 
             /**
@@ -71,8 +71,8 @@ export const rgbSchema = Type.Intersect([
              * @since 0.1.0
              */
             green: Type.Readonly(Type.Integer({
-                minimum: minRgbValue,
-                maximum: maxRgbValue
+                minimum: minRGBValue,
+                maximum: maxRGBValue
             })),
 
             /**
@@ -84,8 +84,8 @@ export const rgbSchema = Type.Intersect([
              * @since 0.1.0
              */
             blue: Type.Readonly(Type.Integer({
-                minimum: minRgbValue,
-                maximum: maxRgbValue
+                minimum: minRGBValue,
+                maximum: maxRGBValue
             })),
 
             /**
@@ -97,8 +97,8 @@ export const rgbSchema = Type.Intersect([
              * @since 0.1.0
              */
             alpha: Type.Optional(Type.Readonly(Type.Integer({
-                minimum: minRgbValue,
-                maximum: maxRgbValue
+                minimum: minRGBValue,
+                maximum: maxRGBValue
             }))),
 
             /**
