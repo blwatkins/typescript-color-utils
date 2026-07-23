@@ -295,6 +295,39 @@ describe('RGBBuilder', (): void => {
                 expect(rgb.blue).toBe(gray);
                 expect(rgb.alpha).toBe(alpha);
             });
+
+            test('buildFrom should return an RGB object with set grayscale values when other parameters are undefined', (): void => {
+                const gray: 111 = 111 as const;
+                const alpha: undefined = undefined;
+                const rgb: RGB = RGBBuilder.buildFrom(gray, undefined as unknown as number, undefined as unknown as number, undefined);
+                expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+                expect(rgb.red).toBe(gray);
+                expect(rgb.green).toBe(gray);
+                expect(rgb.blue).toBe(gray);
+                expect(rgb.alpha).toBe(alpha);
+            });
+
+            test('buildFrom should return an RGBA object with set grayscale and alpha values when third parameter is undefined', (): void => {
+                const gray: 222 = 222 as const;
+                const alpha: 111 = 111 as const;
+                const rgb: RGB = RGBBuilder.buildFrom(gray, alpha, undefined as unknown as number);
+                expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+                expect(rgb.red).toBe(gray);
+                expect(rgb.green).toBe(gray);
+                expect(rgb.blue).toBe(gray);
+                expect(rgb.alpha).toBe(alpha);
+            });
+
+            test('buildFrom should return an RGBA object with set grayscale and alpha values when other parameters are undefined', (): void => {
+                const gray: 111 = 111 as const;
+                const alpha: 222 = 222 as const;
+                const rgb: RGB = RGBBuilder.buildFrom(gray, alpha, undefined as unknown as number, undefined as unknown as number);
+                expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+                expect(rgb.red).toBe(gray);
+                expect(rgb.green).toBe(gray);
+                expect(rgb.blue).toBe(gray);
+                expect(rgb.alpha).toBe(alpha);
+            });
         });
     });
 
@@ -381,88 +414,130 @@ describe('RGBBuilder', (): void => {
                     const defaultAlpha: number = 40;
 
                     describe('red parameter', (): void => {
-                        test.each(
-                            testCases.filter((input: TestCase): boolean => input.input !== undefined)
-                        )(`%# - buildFrom($input, ${defaultGreen}, ${defaultBlue}, ${defaultAlpha}/undefined) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
-                            expect((): void => {
-                                RGBBuilder.buildFrom(testInput as number, defaultGreen, defaultBlue, defaultAlpha);
-                            }).toThrow(testExpected);
+                        describe.each(
+                            testCases
+                        )(`%# - buildFrom($input, ${defaultGreen}, ${defaultBlue}, [${defaultAlpha}|undefined]) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            test(`buildFrom(${testInput as string}, ${defaultGreen}, ${defaultBlue}, ${defaultAlpha})`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(testInput as number, defaultGreen, defaultBlue, defaultAlpha);
+                                }).toThrow(testExpected);
+                            });
 
-                            expect((): void => {
-                                RGBBuilder.buildFrom(testInput as number, defaultGreen, defaultBlue, undefined);
-                            }).toThrow(testExpected);
+                            test(`buildFrom(${testInput as string}, ${defaultGreen}, ${defaultBlue}, undefined)`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(testInput as number, defaultGreen, defaultBlue, undefined);
+                                }).toThrow(testExpected);
+                            });
 
-                            expect((): void => {
-                                RGBBuilder.buildFrom(testInput as number, defaultGreen, defaultBlue);
-                            }).toThrow(testExpected);
+                            test(`buildFrom(${testInput as string}, ${defaultGreen}, ${defaultBlue})`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(testInput as number, defaultGreen, defaultBlue);
+                                }).toThrow(testExpected);
+                            });
                         });
                     });
 
                     describe('green parameter', (): void => {
-                        test.each(
-                            testCases.filter((input: TestCase): boolean => input.input !== undefined)
-                        )(`%# - buildFrom(${defaultRed}, $input, ${defaultBlue}, ${defaultAlpha}/undefined) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
-                            expect((): void => {
-                                RGBBuilder.buildFrom(defaultRed, testInput as number, defaultBlue, defaultAlpha);
-                            }).toThrow(testExpected);
+                        describe.each(
+                            testCases
+                        )(`%# - buildFrom(${defaultRed}, $input, ${defaultBlue}, [${defaultAlpha}|undefined]) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            test(`buildFrom(${defaultRed}, ${testInput as string}, ${defaultBlue}, ${defaultAlpha})`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(defaultRed, testInput as number, defaultBlue, defaultAlpha);
+                                }).toThrow(testExpected);
+                            });
 
-                            expect((): void => {
-                                RGBBuilder.buildFrom(defaultRed, testInput as number, defaultBlue, undefined);
-                            }).toThrow(testExpected);
+                            test(`buildFrom(${defaultRed}, ${testInput as string}, ${defaultBlue}, undefined)`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(defaultRed, testInput as number, defaultBlue, undefined);
+                                }).toThrow(testExpected);
+                            });
 
-                            expect((): void => {
-                                RGBBuilder.buildFrom(defaultRed, testInput as number, defaultBlue);
-                            }).toThrow(testExpected);
+                            test(`buildFrom(${defaultRed}, ${testInput as string}, ${defaultBlue})`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(defaultRed, testInput as number, defaultBlue);
+                                }).toThrow(testExpected);
+                            });
                         });
                     });
 
                     describe('blue parameter', (): void => {
-                        test.each(
-                            testCases.filter((input: TestCase): boolean => input.input !== undefined)
-                        )(`%# - buildFrom(${defaultRed}, ${defaultGreen}, $input, ${defaultAlpha}/undefined) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
-                            expect((): void => {
-                                RGBBuilder.buildFrom(defaultRed, defaultGreen, testInput as number, defaultAlpha);
-                            }).toThrow(testExpected);
+                        describe.each(
+                            testCases
+                        )(`%# - buildFrom(${defaultRed}, ${defaultGreen}, $input, [${defaultAlpha}|undefined]) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            test(`buildFrom(${defaultRed}, ${defaultGreen}, ${testInput as string}, ${defaultAlpha})`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(defaultRed, defaultGreen, testInput as number, defaultAlpha);
+                                }).toThrow(testExpected);
+                            });
 
-                            expect((): void => {
-                                RGBBuilder.buildFrom(defaultRed, defaultGreen, testInput as number, undefined);
-                            }).toThrow(testExpected);
+                            if (testInput !== undefined) {
+                                test(`buildFrom(${defaultRed}, ${defaultGreen}, ${testInput as string}, undefined)`, (): void => {
+                                    expect((): void => {
+                                        RGBBuilder.buildFrom(defaultRed, defaultGreen, testInput as number, undefined);
+                                    }).toThrow(testExpected);
+                                });
 
-                            expect((): void => {
-                                RGBBuilder.buildFrom(defaultRed, defaultGreen, testInput as number);
-                            }).toThrow(testExpected);
+                                test(`buildFrom(${defaultRed}, ${defaultGreen}, ${testInput as string})`, (): void => {
+                                    expect((): void => {
+                                        RGBBuilder.buildFrom(defaultRed, defaultGreen, testInput as number);
+                                    }).toThrow(testExpected);
+                                });
+                            }
                         });
                     });
 
                     describe('gray parameter', (): void => {
-                        test.each(
-                            testCases.filter((input: TestCase): boolean => input.input !== undefined)
-                        )(`%# - buildFrom($input, [${defaultAlpha}/undefined, [undefined], [undefined]) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
-                            expect((): void => {
-                                RGBBuilder.buildFrom(testInput as number, defaultAlpha);
-                            }).toThrow(testExpected);
+                        describe.each(
+                            testCases
+                        )(`%# - buildFrom($input, [${defaultAlpha}|undefined], [undefined], [undefined]) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            test(`buildFrom(${testInput as string})`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(testInput as number);
+                                }).toThrow(testExpected);
+                            });
 
-                            expect((): void => {
-                                RGBBuilder.buildFrom(testInput as number, undefined);
-                            }).toThrow(testExpected);
+                            test(`buildFrom(${testInput as string}, ${defaultAlpha})`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(testInput as number, defaultAlpha);
+                                }).toThrow(testExpected);
+                            });
 
-                            expect((): void => {
-                                RGBBuilder.buildFrom(testInput as number);
-                            }).toThrow(testExpected);
+                            test(`buildFrom(${testInput as string}, undefined)`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(testInput as number, undefined);
+                                }).toThrow(testExpected);
+                            });
+
+                            test(`buildFrom(${testInput as string}, undefined, undefined)`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(testInput as number, undefined as unknown as number, undefined as unknown as number);
+                                }).toThrow(testExpected);
+                            });
+
+                            test(`buildFrom(${testInput as string}, undefined, undefined, undefined)`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(testInput as number, undefined as unknown as number, undefined as unknown as number, undefined);
+                                }).toThrow(testExpected);
+                            });
                         });
                     });
 
                     describe('alpha parameter', (): void => {
-                        test.each(
+                        describe.each(
                             testCases.filter((input: TestCase): boolean => input.input !== undefined)
-                        )(`%# - buildFrom([${defaultRed}, ${defaultGreen}, ${defaultBlue} | ${defaultGray}], $input) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
-                            expect((): void => {
-                                RGBBuilder.buildFrom(defaultRed, defaultGreen, defaultBlue, testInput as number);
-                            }).toThrow(testExpected);
+                        )(`%# - buildFrom([${defaultRed}, ${defaultGreen}, ${defaultBlue}|${defaultGray}], $input) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            test(`buildFrom(${defaultRed}, ${defaultGreen}, ${defaultBlue}, ${testInput as string})`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(defaultRed, defaultGreen, defaultBlue, testInput as number);
+                                }).toThrow(testExpected);
+                            });
 
-                            expect((): void => {
-                                RGBBuilder.buildFrom(defaultGray, testInput as number);
-                            }).toThrow(testExpected);
+                            test(`buildFrom(${defaultGray}, ${testInput as string})`, (): void => {
+                                expect((): void => {
+                                    RGBBuilder.buildFrom(defaultGray, testInput as number);
+                                }).toThrow(testExpected);
+                            });
                         });
                     });
                 });

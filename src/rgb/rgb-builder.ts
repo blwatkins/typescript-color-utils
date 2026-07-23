@@ -107,13 +107,12 @@ export class RGBBuilder {
      */
     public static buildFrom(red: number, green: number, blue: number, alpha?: number): RGB;
     public static buildFrom(a: number, b?: number, c?: number, d?: number): RGB {
-        if (c === undefined && d === undefined ) {
+        if (c === undefined && d === undefined) {
             return (new RGBBuilder()).setGray(a).setAlpha(b).build();
+        } else if (b !== undefined && c !== undefined) {
+            return (new RGBBuilder()).setRed(a).setGreen(b).setBlue(c).setAlpha(d).build();
         } else {
-            const redValue: number = a;
-            const greenValue: number = b as number;
-            const blueValue: number = c as number;
-            return (new RGBBuilder()).setRed(redValue).setGreen(greenValue).setBlue(blueValue).setAlpha(d).build();
+            throw new TypeError('Invalid arguments provided to RGBBuilder.buildFrom. Expected either (gray: number, alpha?: number) or (red: number, green: number, blue: number, alpha?: number).');
         }
     }
 
