@@ -76,7 +76,9 @@ export class RGBBuilder {
      * @param {number} red - The red component value.
      * This value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
      *
-     * @returns {this} The current instance of the {@link RGBBuilder} for method chaining.
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {TypeError} - When the given value is not a finite number.
      *
      * @public
      * @since 0.1.0
@@ -86,11 +88,37 @@ export class RGBBuilder {
         return this;
     }
 
+    /**
+     * Set the green component of the {@link RGB} object.
+     *
+     * @param {number} green - The green component value.
+     * This value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {TypeError} - When the given value is not a finite number.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public setGreen(green: number): this {
         this.#green = Math.floor(MathUtility.constrain(green, minRGBValue, maxRGBValue));
         return this;
     }
 
+    /**
+     * Set the blue component of the {@link RGB} object.
+     *
+     * @param {number} blue - The blue component value.
+     * This value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {TypeError} - When the given value is not a finite number.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public setBlue(blue: number): this {
         this.#blue = Math.floor(MathUtility.constrain(blue, minRGBValue, maxRGBValue));
         return this;

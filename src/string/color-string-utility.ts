@@ -46,7 +46,7 @@ export class ColorStringUtility {
     /**
      * Get the regular expression for hex colors.
      *
-     * @returns {RegExp} Regular expression pattern for validating hex color strings in the format `#RRGGBB` or `#RRGGBBAA`.
+     * @returns {RegExp} - Regular expression pattern for validating hex color strings in the format `#RRGGBB` or `#RRGGBBAA`.
      * Case must be consistent in hex color strings: either all lowercase or all uppercase.
      *
      * @public
@@ -59,7 +59,7 @@ export class ColorStringUtility {
     /**
      * Get the regular expression for hex colors in RGB format.
      *
-     * @returns {RegExp} Regular expression pattern for validating hex color strings in the format `#RRGGBB`.
+     * @returns {RegExp} - Regular expression pattern for validating hex color strings in the format `#RRGGBB`.
      * Case must be consistent in hex color strings: either all lowercase or all uppercase.
      *
      * @public
@@ -72,7 +72,7 @@ export class ColorStringUtility {
     /**
      * Get the regular expression for hex colors in RGBA format.
      *
-     * @returns {RegExp} Regular expression pattern for validating hex color strings in the format `#RRGGBBAA`.
+     * @returns {RegExp} - Regular expression pattern for validating hex color strings in the format `#RRGGBBAA`.
      * Case must be consistent in hex color strings: either all lowercase or all uppercase.
      *
      * @public
@@ -87,7 +87,7 @@ export class ColorStringUtility {
      *
      * @param {unknown} input - The input to check.
      *
-     * @returns {input is string} `true` if the given input matches the {@link ColorStringUtility.hexColorPattern} pattern; `false` otherwise.
+     * @returns {input is string} - `true` if the given input matches the {@link ColorStringUtility.hexColorPattern} pattern; `false` otherwise.
      *
      * @public
      * @since 0.1.0
@@ -101,7 +101,7 @@ export class ColorStringUtility {
      *
      * @param {unknown} input - The input to check.
      *
-     * @returns {input is string} `true` if the given input matches the {@link ColorStringUtility.hexColorPatternRGB} pattern; `false` otherwise.
+     * @returns {input is string} - `true` if the given input matches the {@link ColorStringUtility.hexColorPatternRGB} pattern; `false` otherwise.
      *
      * @public
      * @since 0.1.0
@@ -115,7 +115,7 @@ export class ColorStringUtility {
      *
      * @param {unknown} input - The input to check.
      *
-     * @returns {input is string} `true` if the given input matches the {@link ColorStringUtility.hexColorPatternRGBA} pattern; `false` otherwise.
+     * @returns {input is string} - `true` if the given input matches the {@link ColorStringUtility.hexColorPatternRGBA} pattern; `false` otherwise.
      *
      * @public
      * @since 0.1.0

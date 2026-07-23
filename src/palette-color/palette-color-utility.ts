@@ -48,7 +48,7 @@ export class PaletteColorUtility {
      *
      * @param {unknown} input - The input to check.
      *
-     * @returns {input is PaletteColor} `true` if the input is a {@link PaletteColor} object, `false` otherwise.
+     * @returns {input is PaletteColor} - `true` if the input is a {@link PaletteColor} object, `false` otherwise.
      *
      * @type {(unknown) => input is PaletteColor}
      * @since 0.1.0
