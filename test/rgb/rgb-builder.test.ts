@@ -223,42 +223,78 @@ describe('RGBBuilder', (): void => {
     });
 
     describe('buildFrom', (): void => {
-        test('buildFrom should return an RGB object with set RGB values', (): void => {
-            const red: 25 = 25 as const;
-            const green: 75 = 75 as const;
-            const blue: 125 = 125 as const;
-            const rgb: RGB = RGBBuilder.buildFrom(red, green, blue);
-            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
-            expect(rgb.red).toBe(red);
-            expect(rgb.green).toBe(green);
-            expect(rgb.blue).toBe(blue);
-            expect(rgb.alpha).toBeUndefined();
+        describe('buildFrom with RGB components', (): void => {
+            test('buildFrom should return an RGB object with set RGB values', (): void => {
+                const red: 25 = 25 as const;
+                const green: 75 = 75 as const;
+                const blue: 125 = 125 as const;
+                const rgb: RGB = RGBBuilder.buildFrom(red, green, blue);
+                expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+                expect(rgb.red).toBe(red);
+                expect(rgb.green).toBe(green);
+                expect(rgb.blue).toBe(blue);
+                expect(rgb.alpha).toBeUndefined();
+            });
+
+            test('buildFrom should return an RGB object with set RGBA values when alpha is undefined', (): void => {
+                const red: 35 = 35 as const;
+                const green: 85 = 85 as const;
+                const blue: 135 = 135 as const;
+                const alpha: undefined = undefined;
+                const rgb: RGB = RGBBuilder.buildFrom(red, green, blue, alpha);
+                expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+                expect(rgb.red).toBe(red);
+                expect(rgb.green).toBe(green);
+                expect(rgb.blue).toBe(blue);
+                expect(rgb.alpha).toBe(alpha);
+            });
+
+            test('buildFrom should return an RGBA object with set RGBA values', (): void => {
+                const red: 175 = 175 as const;
+                const green: 125 = 125 as const;
+                const blue: 75 = 75 as const;
+                const alpha: 25 = 25 as const;
+                const rgb: RGB = RGBBuilder.buildFrom(red, green, blue, alpha);
+                expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+                expect(rgb.red).toBe(red);
+                expect(rgb.green).toBe(green);
+                expect(rgb.blue).toBe(blue);
+                expect(rgb.alpha).toBe(alpha);
+            });
         });
 
-        test('buildFrom should return an RGB object with set RGBA values when alpha is undefined', (): void => {
-            const red: 35 = 35 as const;
-            const green: 85 = 85 as const;
-            const blue: 135 = 135 as const;
-            const alpha: undefined = undefined;
-            const rgb: RGB = RGBBuilder.buildFrom(red, green, blue, alpha);
-            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
-            expect(rgb.red).toBe(red);
-            expect(rgb.green).toBe(green);
-            expect(rgb.blue).toBe(blue);
-            expect(rgb.alpha).toBe(alpha);
-        });
+        describe('buildFrom with grayscale component', (): void => {
+            test('buildFrom should return an RGB object with set grayscale values', (): void => {
+                const gray: 123 = 123 as const;
+                const rgb: RGB = RGBBuilder.buildFrom(gray);
+                expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+                expect(rgb.red).toBe(gray);
+                expect(rgb.green).toBe(gray);
+                expect(rgb.blue).toBe(gray);
+                expect(rgb.alpha).toBeUndefined();
+            });
 
-        test('buildFrom should return an RGBA object with set RGBA values', (): void => {
-            const red: 175 = 175 as const;
-            const green: 125 = 125 as const;
-            const blue: 75 = 75 as const;
-            const alpha: 25 = 25 as const;
-            const rgb: RGB = RGBBuilder.buildFrom(red, green, blue, alpha);
-            expect(RGBUtility.isRGB(rgb)).toBeTruthy();
-            expect(rgb.red).toBe(red);
-            expect(rgb.green).toBe(green);
-            expect(rgb.blue).toBe(blue);
-            expect(rgb.alpha).toBe(alpha);
+            test('buildFrom should return an RGB object with set grayscale values when alpha is undefined', (): void => {
+                const gray: 234 = 234 as const;
+                const alpha: undefined = undefined;
+                const rgb: RGB = RGBBuilder.buildFrom(gray, alpha);
+                expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+                expect(rgb.red).toBe(gray);
+                expect(rgb.green).toBe(gray);
+                expect(rgb.blue).toBe(gray);
+                expect(rgb.alpha).toBe(alpha);
+            });
+
+            test('buildFrom should return an RGBA object with set grayscale and alpha values', (): void => {
+                const gray: 123 = 123 as const;
+                const alpha: 123 = 123 as const;
+                const rgb: RGB = RGBBuilder.buildFrom(gray, alpha);
+                expect(RGBUtility.isRGB(rgb)).toBeTruthy();
+                expect(rgb.red).toBe(gray);
+                expect(rgb.green).toBe(gray);
+                expect(rgb.blue).toBe(gray);
+                expect(rgb.alpha).toBe(alpha);
+            });
         });
     });
 
@@ -338,6 +374,7 @@ describe('RGBBuilder', (): void => {
                 });
 
                 describe('buildFrom', (): void => {
+                    const defaultGray: number = 50;
                     const defaultRed: number = 10;
                     const defaultGreen: number = 20;
                     const defaultBlue: number = 30;
@@ -397,12 +434,34 @@ describe('RGBBuilder', (): void => {
                         });
                     });
 
+                    describe('gray parameter', (): void => {
+                        test.each(
+                            testCases.filter((input: TestCase): boolean => input.input !== undefined)
+                        )(`%# - buildFrom($input, [${defaultAlpha}/undefined, [undefined], [undefined]) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                            expect((): void => {
+                                RGBBuilder.buildFrom(testInput as number, defaultAlpha);
+                            }).toThrow(testExpected);
+
+                            expect((): void => {
+                                RGBBuilder.buildFrom(testInput as number, undefined);
+                            }).toThrow(testExpected);
+
+                            expect((): void => {
+                                RGBBuilder.buildFrom(testInput as number);
+                            }).toThrow(testExpected);
+                        });
+                    });
+
                     describe('alpha parameter', (): void => {
                         test.each(
                             testCases.filter((input: TestCase): boolean => input.input !== undefined)
-                        )(`%# - buildFrom(${defaultRed}, ${defaultGreen}, ${defaultBlue}, $input) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
+                        )(`%# - buildFrom([${defaultRed}, ${defaultGreen}, ${defaultBlue} | ${defaultGray}], $input) should throw $expected`, ({ input: testInput, expected: testExpected }: TestCase): void => {
                             expect((): void => {
                                 RGBBuilder.buildFrom(defaultRed, defaultGreen, defaultBlue, testInput as number);
+                            }).toThrow(testExpected);
+
+                            expect((): void => {
+                                RGBBuilder.buildFrom(defaultGray, testInput as number);
                             }).toThrow(testExpected);
                         });
                     });

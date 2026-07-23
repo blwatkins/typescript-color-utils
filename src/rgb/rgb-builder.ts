@@ -71,6 +71,53 @@ export class RGBBuilder {
     #alpha: number | undefined = undefined;
 
     /**
+     * Build an {@link RGB} object from the given component values.
+     *
+     * @remarks All parameters will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @param {number} gray - The component value for red, green, and blue.
+     * @param {number|undefined} alpha - The optional alpha component value.
+     *
+     * @returns {RGB} - An {@link RGB} object.
+     *
+     * @throws {TypeError} - When the given `gray` component is not a finite number.
+     * @throws {TypeError} - When the given `alpha` component is not a finite number or undefined.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public static buildFrom(gray: number, alpha?: number): RGB;
+    /**
+     * Build an {@link RGB} object from the given component values.
+     *
+     * @remarks All parameters will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @param {number} red - The red component value.
+     * @param {number} green - The green component value.
+     * @param {number} blue - The blue component value.
+     * @param {number|undefined} alpha - The optional alpha component value.
+     *
+     * @returns {RGB} - An {@link RGB} object.
+     *
+     * @throws {TypeError} - When the given `red`, `green`, and `blue` components are not all finite numbers.
+     * @throws {TypeError} - When the given `alpha` component is not a finite number or undefined.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public static buildFrom(red: number, green: number, blue: number, alpha?: number): RGB;
+    public static buildFrom(a: number, b?: number, c?: number, d?: number): RGB {
+        if (c === undefined && d === undefined ) {
+            return (new RGBBuilder()).setGray(a).setAlpha(b).build();
+        } else {
+            const redValue: number = a;
+            const greenValue: number = b as number;
+            const blueValue: number = c as number;
+            return (new RGBBuilder()).setRed(redValue).setGreen(greenValue).setBlue(blueValue).setAlpha(d).build();
+        }
+    }
+
+    /**
      * Set the red component of the {@link RGB} object.
      *
      * @param {number} red - The red component value.
@@ -164,6 +211,14 @@ export class RGBBuilder {
         return this;
     }
 
+    /**
+     * Build the {@link RGB} object with the current state of the {@link RGBBuilder}.
+     *
+     * @returns {RGB} - An {@link RGB} object.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public build(): RGB {
         return {
             red: this.#red,
@@ -172,9 +227,5 @@ export class RGBBuilder {
             alpha: this.#alpha,
             discriminator: Discriminators.RGB
         };
-    }
-
-    public static buildFrom(red: number, green: number, blue: number, alpha?: number): RGB {
-        return (new RGBBuilder()).setRed(red).setGreen(green).setBlue(blue).setAlpha(alpha).build();
     }
 }
