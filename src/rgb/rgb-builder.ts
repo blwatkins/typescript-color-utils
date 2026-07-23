@@ -78,7 +78,7 @@ export class RGBBuilder {
      * @remarks All parameters will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
      *
      * @param {number} gray - The component value for red, green, and blue.
-     * @param {number|undefined} alpha - The optional alpha component value.
+     * @param {number | undefined} alpha - The optional alpha component value.
      *
      * @returns {RGB} - An {@link RGB} object.
      *
@@ -97,7 +97,7 @@ export class RGBBuilder {
      * @param {number} red - The red component value.
      * @param {number} green - The green component value.
      * @param {number} blue - The blue component value.
-     * @param {number|undefined} alpha - The optional alpha component value.
+     * @param {number | undefined} alpha - The optional alpha component value.
      *
      * @returns {RGB} - An {@link RGB} object.
      *
@@ -108,13 +108,13 @@ export class RGBBuilder {
      * @since 0.1.0
      */
     public static buildFrom(red: number, green: number, blue: number, alpha?: number): RGB;
-    public static buildFrom(a: number, b?: number, c?: number, d?: number): RGB {
-        if (c === undefined && d === undefined) {
-            return (new RGBBuilder()).setGray(a).setAlpha(b).build();
-        } else if (b !== undefined && c !== undefined) {
-            return (new RGBBuilder()).setRed(a).setGreen(b).setBlue(c).setAlpha(d).build();
+    public static buildFrom(arg1: number, arg2?: number, arg3?: number, arg4?: number): RGB {
+        if (arg3 === undefined && arg4 === undefined) {
+            return (new RGBBuilder()).setGray(arg1).setAlpha(arg2).build();
+        } else if (arg2 !== undefined && arg3 !== undefined) {
+            return (new RGBBuilder()).setRed(arg1).setGreen(arg2).setBlue(arg3).setAlpha(arg4).build();
         } else {
-            throw new TypeError('Invalid arguments provided to RGBBuilder.buildFrom. Expected either (gray: number, alpha?: number) or (red: number, green: number, blue: number, alpha?: number).');
+            throw new TypeError('Invalid arguments. Expected either (gray: number, alpha?: number) or (red: number, green: number, blue: number, alpha?: number).');
         }
     }
 
@@ -192,7 +192,7 @@ export class RGBBuilder {
     /**
      * Set the optional alpha component of the {@link RGB} object.
      *
-     * @param {number|undefined} alpha - The alpha component value.
+     * @param {number | undefined} alpha - The alpha component value.
      * When not `undefined`, this value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
      *
      * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
