@@ -24,6 +24,8 @@ import { Discriminators } from '../discriminator';
 
 import { RGB, maxRGBValue, minRGBValue } from './rgb';
 
+// TODO - Instead of a, b, c for variables, use arg1, arg2, arg3, etc.
+
 /**
  * A builder class for creating an {@link RGB} object.
  *

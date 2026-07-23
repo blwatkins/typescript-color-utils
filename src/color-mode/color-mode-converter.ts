@@ -22,6 +22,9 @@ import chroma from 'chroma-js';
 
 import { NumberUtility } from '@blwatkins/utils';
 
+// TODO - Overload methods for rgb vs grayscale arguments - like RGBBuilder does. This will allow for better type safety and clarity in the API.
+// TODO - Instead of a, b, c for variables, use arg1, arg2, arg3, etc.
+
 /**
  * Static properties and methods for converting between color modes.
  *
@@ -70,6 +73,24 @@ export class ColorModeConverter {
         return ColorModeConverter.#rgbComponentsToHex(a, b, c);
     }
 
+    /**
+     * Convert RGB color components to a CSS style string.
+     *
+     * @param {number} a - The red component (0-255) or grayscale value (0-255) of the given color.
+     * This value will be constrained to the range 0-255.
+     * @param {number|undefined} b - The green component (0-255) of the given color.
+     * This value will be constrained to the range 0-255.
+     * @param {number|undefined} c - The blue component (0-255) of the given color.
+     * This value will be constrained to the range 0-255.
+     *
+     * @returns {string} - The CSS style string that represents the given color.
+     *
+     * @throws {TypeError} - When `a` is not a finite number for a grayscale color.
+     * @throws {TypeError} - When any of `a`, `b`, or `c` are not finite numbers for an RGB color.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public static rgbToStyleString(a: number, b?: number, c?: number): string {
         ColorModeConverter.#validateRGBInput(a, b, c, true);
 

@@ -26,6 +26,11 @@ import { Discriminators } from '../discriminator';
 
 import { RGB, rgbSchema } from './rgb';
 
+/**
+ * Static methods and properties for building and validating {@link RGB} objects.
+ *
+ * @since 0.1.0
+ */
 export class RGBUtility {
     /**
      * Is the given input a {@link RGB} object?
@@ -44,7 +49,26 @@ export class RGBUtility {
         }
     });
 
+    /**
+     * Get the JSON string representation of the given {@link RGB} object.
+     *
+     * @param {RGB} rgb - The {@link RGB} object to stringify.
+     *
+     * @returns {string} - The JSON string representation of the given {@link RGB} object.
+     *
+     * @throws {TypeError} - When the given input is not an {@link RGB} object.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public static toString(rgb: RGB): string {
+        RGBUtility.#validateRGBInput(rgb);
         return JSON.stringify(rgb);
+    }
+
+    static #validateRGBInput(input: unknown): void {
+        if (!RGBUtility.isRGB(input)) {
+            throw new TypeError('Input must be a valid RGB object.');
+        }
     }
 }
