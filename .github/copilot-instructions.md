@@ -12,8 +12,8 @@ The two documents serve overlapping audiences and should stay consistent: when y
 
 ## Tech Stack
 
-- **Language:** TypeScript (targeting ES2022)
-- **Runtime:** Node.js (^22.22.0 || >=24)
+- **Language:** TypeScript
+- **Runtime:** Node.js
 - **Package manager:** npm
 - **Build:** tsdown (ESM output)
 - **Test:** Vitest (coverage via V8)
@@ -151,6 +151,7 @@ The following preferences require manual review since no ESLint rule can check t
 - **Document default values:** For class fields, object properties, and module-level constants and variables that have a default or initial value (e.g., `Random.#rng` defaulting to `Math.random`), state the default via `@default` (e.g., `@default Math.random`).
 - **Document default parameter values:** Indicate default values for parameters in the `@param` annotation.
 - **Annotate abstract/readonly/private/protected/override members:** Use `@abstract`, `@readonly`, `@private`, `@protected`, and `@override`, respectively, matching the corresponding TypeScript modifier. `eslint.config.ts.mjs` validates these tags are well-formed where present, but does not require their presence for a given modifier.
+- **Scope `@public` to members:** Apply `@public` to public class members, constructors, and interface properties. Do not add `@public` to the doc comment of an exported class, interface, type, enum, or constant itself — the export is the visibility signal.
 
 ## Documentation and GitHub Pages
 
@@ -183,9 +184,10 @@ Use `.md` relative links within `docs/` source files; the build process will con
 
 ### Vitest Testing
 
-Primary development work happens in `src/`, with corresponding tests under `test/`.
-Shared test fixture helpers should live under `test/utils` (create this directory when needed).
-Vitest also type-checks test files at run time (in addition to executing them), configured via the `typecheck` block in `vitest.config.ts` against `tsconfig.vitest.json`.
+- This repository uses Vitest for testing, with coverage reporting via V8.
+- Tests live in the `test/` directory, with a folder structure that mirrors the source code in `src/`.
+- Shared test fixtures and scenario helpers live under `test/utils`.
+- Vitest also type-checks test files at run time (in addition to executing them), configured via the `typecheck` block in `vitest.config.ts` against `tsconfig.vitest.json`.
 
 ### Validation Steps
 
@@ -308,7 +310,7 @@ Generate a Markdown file with these sections in order:
 
 2. **About This Page**
    - "This page is a technical record of the skills, tools, and engineering practices represented in the [PROJECT_NAME] project."
-   
+
 3. **Project Overview** (2–3 sentences)
    - What is this project and what does it help you build?
    - Link to the GitHub repository
