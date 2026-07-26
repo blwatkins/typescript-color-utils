@@ -45,7 +45,8 @@
     "test:coverage": "vitest run --coverage",
     "docs": "typedoc",
     "build": "tsdown",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "validate": "npm run lint:all && npm run docs && npm run build && npm test"
   },
   "dependencies": {
     "@blwatkins/utils": "alpha",
