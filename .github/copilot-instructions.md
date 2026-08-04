@@ -74,6 +74,16 @@ Static classes must:
 - Include a JSDoc `@throws` on the constructor documenting the instantiation error
 - Expose public static getters or methods only
 
+### Deprecation
+
+When a public member is deprecated rather than removed:
+
+- Group deprecated members below a banner comment inside the class or module:
+  `/* ******************* TODO: DEPRECATED ******************* */`
+- Keep the member exported and fully functional until the removal release. A deprecated method must still satisfy its documented contract.
+- Keep its test coverage until the member is removed. Do not delete a suite because a deprecated member started failing — a failing deprecated member is a defect in the current release, not dead weight.
+- Deprecate the member, any private helpers that exist only to support it, and the schema or type members it depends on, in the same change.
+
 ### TypeScript Conventions
 
 - The package is ESM-only (`"type": "module"`), so keep imports/exports compatible with Node.js ESM resolution.
@@ -163,6 +173,8 @@ The following preferences require manual review since no ESLint rule can check t
 - **Annotate abstract/readonly/private/protected/override members:** Use `@abstract`, `@readonly`, `@private`, `@protected`, and `@override`, respectively, matching the corresponding TypeScript modifier. `eslint.config.ts.mjs` validates these tags are well-formed where present, but does not require their presence for a given modifier.
 - **Scope `@public` to class members:** Apply `@public` to public class members and constructors. Do not add `@public` to the doc comment of an exported class, interface, type, enum, or constant itself, or to interface properties — in both cases the declaration is already the visibility signal.
 - **Use a consistent constructor summary:** Document constructors as `Public constructor.` or `Private constructor.`, matching the TypeScript modifier.
+- **Separate block tag text with a hyphen:** Follow the tag name with ` - ` before the description on `@remarks` and `@deprecated`, matching the existing `@param`, `@returns`, and `@throws` style (e.g., `@remarks - This method does not enforce type checking.`). This applies to test sources as well as `src/`.
+- **State the removal version on `@deprecated`:** Write `@deprecated - Will be removed in v{version}.` When a replacement exists, name it first: `@deprecated - Migrated to {@link Replacement}. Will be removed in v{version}.` Apply the tag to private helpers that exist only to support deprecated members, using the same message format.
 
 ## Documentation and GitHub Pages
 
