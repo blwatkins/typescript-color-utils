@@ -9,8 +9,12 @@ A toolkit of library-agnostic TypeScript and JavaScript utilities for creating a
 
 ## History and Origins
 
-Development for this project originally began in March 2022 when I started creating utility classes in JavaScript to use across my personal algorithmic generative art projects.
-Over the years, the utilities have been refined, expanded, updated, and organized into a series of cohesive libraries that can be used in a variety of projects.
+Development for this project originally began in March 2022, when I started creating utility classes in JavaScript to use in my generative art algorithms.
+Over the years, the utilities have been refined, expanded, and organized into a series of cohesive libraries that can be used in a variety of projects.
+
+## Roadmap
+
+- [TypeScript Color Utilities Roadmap](https://blwatkins.github.io/typescript-color-utils/roadmap.html)
 
 ## License
 
@@ -64,12 +68,12 @@ The full text of the license is included with the project source code.
 ### GitHub Actions
 
 ![CodeQL](https://github.com/blwatkins/typescript-color-utils/actions/workflows/codeql.yml/badge.svg)
-![npm Lint, Build, and Test](https://github.com/blwatkins/typescript-color-utils/actions/workflows/npm-test.yml/badge.svg)
+![npm Validate](https://github.com/blwatkins/typescript-color-utils/actions/workflows/npm-validate.yml/badge.svg)
 ![Deploy GitHub Pages with Jekyll](https://github.com/blwatkins/typescript-color-utils/actions/workflows/gh-pages-jekyll.yml/badge.svg)
 
 ## Sources and Technical Notes
 
-- [Demonstrated Portfolio Skills](https://blwatkins.github.io/typescript-color-utils/portfolio-skills.html)
+- [Resources and References](https://blwatkins.github.io/typescript-color-utils/resources-and-references.html)
 
 ## Thank Yous
 
@@ -80,4 +84,4 @@ Thank you for giving me the tools, resources, opportunities, support, and inspir
 
 ----
 
-Copyright &copy; 2024-2026 Brittni Watkins.
+Copyright &copy; 2024-2026 Brittni Watkins. All rights reserved.

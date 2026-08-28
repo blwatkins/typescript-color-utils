@@ -16,6 +16,8 @@
  * AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
  * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 /* This configuration is designed to lint all TypeScript files in the project. */
@@ -223,6 +225,8 @@ export default defineConfig([
 
             '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
 
+            '@typescript-eslint/no-deprecated': 'warn',
+
             '@typescript-eslint/no-dynamic-delete': 'error',
 
             '@typescript-eslint/no-explicit-any': 'error',
@@ -240,6 +244,10 @@ export default defineConfig([
             '@typescript-eslint/restrict-template-expressions': ['error', {
                 allowNumber: true,
                 allowBoolean: true
+            }],
+
+            '@typescript-eslint/unified-signatures': ['error', {
+                ignoreOverloadsWithDifferentJSDoc: true
             }]
         }
     },
@@ -319,6 +327,7 @@ export default defineConfig([
                     { tags: ['throws'] },
                     { tags: ['default'] },
                     { tags: ['example'] },
+                    { tags: ['deprecated'] },
                     { tags:
                             [
                                 'type',
@@ -328,7 +337,6 @@ export default defineConfig([
                                 'public',
                                 'abstract',
                                 'override',
-                                'deprecated',
                                 'since',
                                 'category'
                             ]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2026 Brittni Watkins.
+ * Copyright (c) 2024-2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -16,22 +16,27 @@
  * AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
  * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 /**
- * An example class export.
+ * Valid discriminators for package types and interfaces.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
-export class HelloWorld {
+export enum Discriminators {
     /**
-     * An example method.
+     * Discriminator value for the PaletteColor type.
      *
-     * @returns {void}
-     *
-     * @since 1.0.0
+     * @since 0.1.0
      */
-    public hello(): void {
-        console.log('Hello, World!');
-    }
+    PaletteColor = '@blwatkins/color-utils:PaletteColor',
+
+    /**
+     * Discriminator value for the RGB type.
+     *
+     * @since 0.1.0
+     */
+    RGB = '@blwatkins/color-utils:RGB'
 }
