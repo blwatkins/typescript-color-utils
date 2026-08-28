@@ -82,11 +82,10 @@
   "keywords": [
     "typescript",
     "javascript",
-    "esm",
-    "color",
+    "utility",
     "utilities",
-    "string",
-    "hex-color",
-    "validation"
+    "utils",
+    "esm",
+    "color"
   ]
 }
