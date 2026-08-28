@@ -1,17 +1,17 @@
 # Minima theme configuration
 remote_theme: jekyll/minima
 plugins:
-  - jekyll-remote-theme
-  - jekyll-github-metadata
-  - jekyll-seo-tag
   - jekyll-coffeescript
-  - jekyll-commonmark-ghpages
-  - jekyll-relative-links
-  - jekyll-optional-front-matter
   - jekyll-default-layout
+  - jekyll-feed
+  - jekyll-gfm-admonitions
+  - jekyll-github-metadata
+  - jekyll-optional-front-matter
+  - jekyll-relative-links
+  - jekyll-remote-theme
+  - jekyll-seo-tag
   - jekyll-titles-from-headings
   - jekyll-toc
-  - jekyll-gfm-admonitions
 
 # valid social icon names can be found at https://fontawesome.com/search?ic=brands
 
@@ -40,6 +40,8 @@ minima:
       url: "https://www.linkedin.com/in/brittni-watkins/"
   nav_pages:
     - index.md
+    - releases.md
+    - roadmap.md
 
 title: "TypeScript Color Utilities"
 description: "A toolkit of library-agnostic TypeScript and JavaScript utilities for creating and managing colors."
@@ -47,6 +49,7 @@ show_downloads: true
 
 sass:
   quiet_deps: true
+  silence_deprecations: ["import"]
 
 exclude:
   - .ruby-version
