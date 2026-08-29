@@ -21,6 +21,4 @@
  */
 
 export * from './color-mode';
-export * from './discriminator';
-export * from './rgb';
 export * from './string';
