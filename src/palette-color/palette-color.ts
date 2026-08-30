@@ -39,12 +39,7 @@ export const paletteColorSchema = Type.Object(
 
         name: Type.Readonly(Type.String({
             pattern: StringUtility.singleLineTrimmedPattern
-        })),
-
-        luminance: Type.Optional(Type.Readonly(Type.Number({
-            minimum: 0,
-            maximum: 1
-        })))
+        }))
     },
     { additionalProperties: false }
 );
