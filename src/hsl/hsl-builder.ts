@@ -22,36 +22,47 @@
 
 import { MathUtility, NumberUtility } from '@blwatkins/utils';
 
-import { RGB, maxRGBComponent, minRGBComponent } from './rgb';
+import { HSL } from './hsl';
 
-export class RGBBuilder {
-    #red: number = 0;
-    #green: number = 0;
-    #blue: number = 0;
+export class HSLBuilder {
+    #hue: number = 0;
+    #saturation: number = 0;
+    #lightness: number = 0;
     #alpha: number | undefined = undefined;
 
-    public setRed(red: number): this {
-        NumberUtility.assertFiniteNumber(red)
-        this.#red = Math.floor(MathUtility.constrain(red, minRGBComponent, maxRGBComponent));
+    public setHue(hue: number): this {
+        NumberUtility.assertFiniteNumber(hue);
+        this.#hue = Math.floor(MathUtility.constrain(hue, 0, 360));
         return this;
     }
 
-    public setGreen(green: number): this {
-        NumberUtility.assertFiniteNumber(green)
-        this.#green = Math.floor(MathUtility.constrain(green, minRGBComponent, maxRGBComponent));
+    public setSaturation(saturation: number): this {
+        NumberUtility.assertFiniteNumber(saturation);
+        this.#saturation = Math.floor(MathUtility.constrain(saturation, 0, 100));
         return this;
     }
 
-    public setBlue(blue: number): this {
-        NumberUtility.assertFiniteNumber(blue)
-        this.#blue = Math.floor(MathUtility.constrain(blue, minRGBComponent, maxRGBComponent));
+    public setSaturationFromPercentage(saturation: number): this {
+        NumberUtility.assertInRange(saturation, 0, 1);
+        this.#saturation = Math.floor(saturation * 100);
+        return this;
+    }
+
+    public setLightness(lightness: number): this {
+        NumberUtility.assertFiniteNumber(lightness);
+        this.#lightness = Math.floor(MathUtility.constrain(lightness, 0, 100));
+        return this;
+    }
+
+    public setLightnessFromPercentage(lightness: number): this {
+        NumberUtility.assertInRange(lightness, 0, 1);
+        this.#lightness = Math.floor(lightness * 100);
         return this;
     }
 
     public setAlpha(alpha: number | undefined): this {
         if (alpha !== undefined) {
-            NumberUtility.assertFiniteNumber(alpha)
-            this.#alpha = Math.floor(MathUtility.constrain(alpha, minRGBComponent, maxRGBComponent));
+            this.setAlphaFromPercentage(alpha);
         } else {
             this.#alpha = undefined;
         }
@@ -61,15 +72,15 @@ export class RGBBuilder {
 
     public setAlphaFromPercentage(alpha: number): this {
         NumberUtility.assertInRange(alpha, 0, 1);
-        this.#alpha = Math.floor(alpha * maxRGBComponent);
+        this.#alpha = alpha;
         return this;
     }
 
-    public build(): RGB {
+    public build(): HSL {
         return {
-            red: this.#red,
-            green: this.#green,
-            blue: this.#blue,
+            hue: this.#hue,
+            saturation: this.#saturation,
+            lightness: this.#lightness,
             alpha: this.#alpha
         }
     }

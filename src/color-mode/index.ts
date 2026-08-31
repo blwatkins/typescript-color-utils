@@ -20,4 +20,5 @@
  * SPDX-License-Identifier: MIT
  */
 
+export * from './chroma-adapter';
 export * from './color-mode-converter';

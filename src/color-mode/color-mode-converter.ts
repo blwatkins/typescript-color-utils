@@ -20,16 +20,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-// TODO - hex to HSL
-
 // TODO - RGB to hex
 // TODO - HSL to hex
 
 import chroma from 'chroma-js';
 
-import { SchemaTypeError, StaticInstanceError } from '@blwatkins/utils';
+import { StaticInstanceError } from '@blwatkins/utils';
 
-import { RGB, RGBBuilder } from '../rgb';
+import { HSL } from '../hsl';
+import { RGB } from '../rgb';
+
+import { ChromaAdapter } from './chroma-adapter';
 
 /**
  * Static properties and methods for converting between color modes.
@@ -49,28 +50,15 @@ export class ColorModeConverter {
         throw new StaticInstanceError('ColorModeConverter is a static class and cannot be instantiated.');
     }
 
+    public static hexToHSL(hexColor: string): HSL {
+        ChromaAdapter.assertValidInput(hexColor);
+        const chromaHSL: [number, number, number] = chroma(hexColor).hsl();
+        return ChromaAdapter.chromaHSLToHSL(chromaHSL);
+    }
+
     public static hexToRGB(hexColor: string): RGB {
-        ColorModeConverter.#assertValidConversionInput(hexColor);
-        const chromaConversion: [number, number, number, number] = chroma(hexColor).rgba();
-        return ColorModeConverter.#chromaRGBToRGB(chromaConversion);
-    }
-
-    static #assertValidConversionInput(input: unknown): void {
-        if (!chroma.valid(input)) {
-            throw new SchemaTypeError('Invalid input for chroma.js conversion.');
-        }
-    }
-
-    static #chromaRGBToRGB(rgbArray: [number, number, number] | [number, number, number, number]): RGB {
-        const builder = new RGBBuilder();
-        builder.setRed(rgbArray[0])
-            .setGreen(rgbArray[1])
-            .setBlue(rgbArray[2]);
-
-        if (rgbArray.length === 4) {
-            builder.setAlphaFromPercentage(rgbArray[3]);
-        }
-
-        return builder.build();
+        ChromaAdapter.assertValidInput(hexColor);
+        const chromaRGB: [number, number, number] = chroma(hexColor).rgb();
+        return ChromaAdapter.chromaRGBToRGB(chromaRGB);
     }
 }

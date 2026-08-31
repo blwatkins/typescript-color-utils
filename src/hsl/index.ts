@@ -19,3 +19,6 @@
  *
  * SPDX-License-Identifier: MIT
  */
+
+export * from './hsl';
+export * from './hsl-builder';

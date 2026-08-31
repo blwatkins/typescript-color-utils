@@ -29,23 +29,23 @@ export const maxRGBComponent: 255 = 255 as const;
 export const rgbSchema = Type.Object(
     {
         red: Type.Integer({
-            minimum: 0,
-            maximum: 255
+            minimum: minRGBComponent,
+            maximum: maxRGBComponent
         }),
 
         green: Type.Integer({
-            minimum: 0,
-            maximum: 255
+            minimum: minRGBComponent,
+            maximum: maxRGBComponent
         }),
 
         blue: Type.Integer({
-            minimum: 0,
-            maximum: 255
+            minimum: minRGBComponent,
+            maximum: maxRGBComponent
         }),
 
         alpha: Type.Optional(Type.Integer({
-            minimum: 0,
-            maximum: 255
+            minimum: minRGBComponent,
+            maximum: maxRGBComponent
         }))
     },
     { additionalProperties: false }

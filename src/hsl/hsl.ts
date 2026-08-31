@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024-2026 Brittni Watkins.
+ * Copyright (c) 2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -20,5 +20,31 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './palette-color';
-export * from './palette-color-utility';
+import { Type, type Static } from 'typebox';
+
+export const hslSchema = Type.Object(
+    {
+        hue: Type.Integer({
+            minimum: 0,
+            maximum: 360
+        }),
+
+        saturation: Type.Integer({
+            minimum: 0,
+            maximum: 100
+        }),
+
+        lightness: Type.Integer({
+            minimum: 0,
+            maximum: 100
+        }),
+
+        alpha: Type.Optional(Type.Number({
+            minimum: 0,
+            maximum: 1
+        }))
+    },
+    { additionalProperties: false }
+);
+
+export type HSL = Static<typeof hslSchema>;
