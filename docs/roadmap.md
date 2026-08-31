@@ -19,32 +19,38 @@ It is a live reflection of my current goals for the project, and it is subject t
 
 - [ ] Color string utility
   - [ ] ColorStringUtility assert hex color methods
-- [ ] RGB interface
-- [ ] `RGBBuilder`
-- [ ] Palette color interface
-- [ ] Palette interface
-- [ ] Color Names utilities
-  - [ ] Color names fetch via Fetch API and JSON file
-  - [ ] Color names cache for user color name override and cached retrieval
-- [ ] Color conversion utility
-- [ ] Color contrast utility (chroma.js and cococh)
-- [ ] Color luminance utility (chroma.js)
-- [ ] Palette selector
-- [ ] PaletteColor selector
-- [ ] HexColor selector
 - [ ] BaseColor
 - [ ] Generative color selectors
   - [ ] RGB
   - [ ] HSL
     - [ ] Multiple saturation and lightness variations
+- [ ] HexColor selector
+- [ ] Color selector selector
+- [ ] RGB
+  - [ ] RGB interface
+  - [ ] `RGBBuilder`
+  - [ ] `RGBUtility`
+- [ ] HSL
+  - [ ] HSL interface
+  - [ ] `HSLBuilder`
+  - [ ] `HSLUtility`
+- [ ] Color conversion utility
+  - [ ] HSL to style conversion
+  - [ ] RGB to style conversion
+- [ ] Palette color interface
+- [ ] Palette interface
+- [ ] Color Names utilities
+  - [ ] Color names fetch via Fetch API and JSON file
+  - [ ] Color names cache for user color name override and cached retrieval
+- [ ] Color contrast utility (chroma.js and cococh)
+- [ ] Color luminance utility (chroma.js)
+- [ ] Palette selector
+- [ ] PaletteColor selector
 - [ ] Base gradient / mapped gradient
 
 ## v0.2.0
 
-- [ ] `RGBUtility`
 - [ ] `ColorModeConverter` updates
-  - [ ] RGB to style conversion
-  - [ ] HSL to style conversion
   - [ ] RGB to HSL conversion
   - [ ] HSL to RGB conversion
 - [ ] Weighted Palette
