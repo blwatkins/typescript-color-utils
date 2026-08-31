@@ -20,11 +20,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-// import chroma from 'chroma-js';
+// TODO - hex to HSL
 
-import { StaticInstanceError } from '@blwatkins/utils';
+// TODO - RGB to hex
+// TODO - HSL to hex
 
-// TODO - use chroma to get color luminance
+import chroma from 'chroma-js';
+
+import { SchemaTypeError, StaticInstanceError } from '@blwatkins/utils';
+
+import { RGB, RGBBuilder } from '../rgb';
 
 /**
  * Static properties and methods for converting between color modes.
@@ -35,7 +40,7 @@ export class ColorModeConverter {
     /**
      * Private constructor.
      *
-     * @throws {StaticInstanceError} - When the class is instantiated.
+     * @throws {StaticInstanceError} When class is instantiated.
      * {@link ColorModeConverter} is a static class and cannot be instantiated.
      *
      * @private
@@ -44,16 +49,28 @@ export class ColorModeConverter {
         throw new StaticInstanceError('ColorModeConverter is a static class and cannot be instantiated.');
     }
 
-    // TODO - can assert validity with chroma.valid
+    public static hexToRGB(hexColor: string): RGB {
+        ColorModeConverter.#assertValidConversionInput(hexColor);
+        const chromaConversion: [number, number, number, number] = chroma(hexColor).rgba();
+        return ColorModeConverter.#chromaRGBToRGB(chromaConversion);
+    }
 
-    // TODO - hex to RGB
-    // TODO - hex to HSL
+    static #assertValidConversionInput(input: unknown): void {
+        if (!chroma.valid(input)) {
+            throw new SchemaTypeError('Invalid input for chroma.js conversion.');
+        }
+    }
 
-    // TODO - RGB to hex
-    // TODO - HSL to hex
+    static #chromaRGBToRGB(rgbArray: [number, number, number] | [number, number, number, number]): RGB {
+        const builder = new RGBBuilder();
+        builder.setRed(rgbArray[0])
+            .setGreen(rgbArray[1])
+            .setBlue(rgbArray[2]);
 
-    // TODO - future changes - RGB to style
-    // TODO - future changes - HSL to style
-    // TODO - future changes - RGB to HSL
-    // TODO - future changes - HSL to RGB
+        if (rgbArray.length === 4) {
+            builder.setAlphaFromPercentage(rgbArray[3]);
+        }
+
+        return builder.build();
+    }
 }

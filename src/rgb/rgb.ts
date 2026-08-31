@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024-2026 Brittni Watkins.
+ * Copyright (c) 2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -20,6 +20,35 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './color-mode';
-export * from './rgb';
-export * from './string';
+import { Type, type Static } from 'typebox';
+
+export const minRGBComponent: 0 = 0 as const;
+
+export const maxRGBComponent: 255 = 255 as const;
+
+export const rgbSchema = Type.Object(
+    {
+        red: Type.Integer({
+            minimum: 0,
+            maximum: 255
+        }),
+
+        green: Type.Integer({
+            minimum: 0,
+            maximum: 255
+        }),
+
+        blue: Type.Integer({
+            minimum: 0,
+            maximum: 255
+        }),
+
+        alpha: Type.Optional(Type.Integer({
+            minimum: 0,
+            maximum: 255
+        }))
+    },
+    { additionalProperties: false }
+);
+
+export type RGB = Static<typeof rgbSchema>;
