@@ -17,4 +17,4 @@ description: "Past and current releases of the TypeScript Color Utilities (@blwa
 ### v0.1.x
 
 - [v0.1.0-alpha.0](./releases/v0.x/v0.1.x/v0.1.0-alpha.x/v0.1.0-alpha.0/doc/index.html) *(August 31, 2026)* - **@latest**
-- v0.1.0-alpha.1 - *In Development*
+- [v0.1.0-alpha.1](./releases/v0.x/v0.1.x/v0.1.0-alpha.x/v0.1.0-alpha.1/doc/index.html) - *In Development*
