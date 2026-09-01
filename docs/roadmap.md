@@ -28,6 +28,9 @@ It is a live reflection of my current goals for the project, and it is subject t
 
 ### v0.1.0-alpha.1
 
+- Development started on August 31, 2026
+
+
 - [ ] RGB
   - [ ] RGB interface
   - [ ] `RGBBuilder`
