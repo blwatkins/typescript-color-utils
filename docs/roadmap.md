@@ -19,8 +19,11 @@ It is a live reflection of my current goals for the project, and it is subject t
 
 ### v0.1.0-alpha.0
 
-- [ ] Color string utility
-  - [ ] ColorStringUtility assert hex color methods
+- [x] Color string utility
+  - [x] ColorStringUtility assert hex color methods
+
+### v0.1.0-alpha.1
+
 - [ ] RGB
   - [ ] RGB interface
   - [ ] `RGBBuilder`
@@ -35,24 +38,24 @@ It is a live reflection of my current goals for the project, and it is subject t
   - [ ] RGB to HSL conversion
   - [ ] HSL to RGB conversion
 
-### v0.1.0-alpha.1
+### v0.1.0-alpha.2
 
 - [ ] Color Names utilities
   - [ ] Color names fetch via Fetch API and JSON file
   - [ ] Color names cache for user color name override and cached retrieval
 
-### v0.1.0-alpha.2
+### v0.1.0-alpha.3
 
 - [ ] Color contrast utility (chroma.js and cococh)
 - [ ] Color luminance utility (chroma.js)
 
-### v0.1.0-alpha.3
+### v0.1.0-alpha.4
 
 - [ ] Palette color interface
 - [ ] Palette interface
 - [ ] BaseColor
 
-### v0.1.0-alpha.4
+### v0.1.0-alpha.5
 
 - [ ] Generative color selectors
   - [ ] RGB
@@ -61,12 +64,12 @@ It is a live reflection of my current goals for the project, and it is subject t
 - [ ] HexColor selector
 - [ ] Color selector selector
 
-### v0.1.0-alpha.5
+### v0.1.0-alpha.6
 
 - [ ] Palette selector
 - [ ] PaletteColor selector
 
-### v0.1.0-alpha.6
+### v0.1.0-alpha.7
 
 - [ ] Base gradient / mapped gradient (chroma.js - `chroma.scale`)
 - [ ] 2D / Anchor gradient (may be better suited to typescript-genart-utils)
