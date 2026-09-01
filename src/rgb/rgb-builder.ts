@@ -20,37 +20,188 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { MathUtility, NumberUtility } from '@blwatkins/utils';
+import { MathUtility, NumberUtility, PrimitiveTypeError } from '@blwatkins/utils';
 
 import { RGB, maxRGBValue, minRGBValue } from './rgb';
 
+/**
+ * A builder for creating an {@link RGB} object.
+ *
+ * @since 0.1.0
+ */
 export class RGBBuilder {
+    /**
+     * The red component of the {@link RGB} object.
+     *
+     * @default 0
+     *
+     * @type {number}
+     * @private
+     */
     #red: number = 0;
+
+    /**
+     * The green component of the {@link RGB} object.
+     *
+     * @default 0
+     *
+     * @type {number}
+     * @private
+     */
     #green: number = 0;
+
+    /**
+     * The blue component of the {@link RGB} object.
+     *
+     * @default 0
+     *
+     * @type {number}
+     * @private
+     */
     #blue: number = 0;
+
+    /**
+     * The optional alpha component of the {@link RGB} object.
+     *
+     * @default undefined
+     *
+     * @type {number | undefined}
+     * @private
+     */
     #alpha: number | undefined = undefined;
 
+    /**
+     * Build an {@link RGB} object from the given component values.
+     *
+     * @remarks All parameters will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @param {number} gray - The component value for red, green, and blue.
+     * @param {number | undefined} alpha - The optional alpha component value.
+     *
+     * @returns {RGB} - An {@link RGB} object.
+     *
+     * @throws {PrimitiveTypeError} - When the given `gray` component is not a finite number.
+     * @throws {PrimitiveTypeError} - When the given `alpha` component is not a finite number or undefined.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public static buildFrom(gray: number, alpha?: number): RGB;
+    /**
+     * Build an {@link RGB} object from the given component values.
+     *
+     * @remarks All parameters will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @param {number} red - The red component value.
+     * @param {number} green - The green component value.
+     * @param {number} blue - The blue component value.
+     * @param {number | undefined} alpha - The optional alpha component value.
+     *
+     * @returns {RGB} - An {@link RGB} object.
+     *
+     * @throws {PrimitiveTypeError} - When the given `red`, `green`, and `blue` components are not all finite numbers.
+     * @throws {PrimitiveTypeError} - When the given `alpha` component is not a finite number or undefined.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public static buildFrom(red: number, green: number, blue: number, alpha?: number): RGB;
+    public static buildFrom(arg1: number, arg2?: number, arg3?: number, arg4?: number): RGB {
+        if (arg3 === undefined && arg4 === undefined) {
+            return (new RGBBuilder()).setGray(arg1).setAlpha(arg2).build();
+        } else if (arg2 !== undefined && arg3 !== undefined) {
+            return (new RGBBuilder()).setRed(arg1).setGreen(arg2).setBlue(arg3).setAlpha(arg4).build();
+        } else {
+            throw new PrimitiveTypeError('Invalid arguments. Expected either (gray: number, alpha?: number) or (red: number, green: number, blue: number, alpha?: number).');
+        }
+    }
+
+    /**
+     * Set the red component of the {@link RGB} object.
+     *
+     * @param {number} red - The red component value.
+     * This value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {PrimitiveTypeError} - When the given value is not a finite number.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public setRed(red: number): this {
-        NumberUtility.assertFiniteNumber(red);
         this.#red = Math.floor(MathUtility.constrain(red, minRGBValue, maxRGBValue));
         return this;
     }
 
+    /**
+     * Set the green component of the {@link RGB} object.
+     *
+     * @param {number} green - The green component value.
+     * This value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {PrimitiveTypeError} - When the given value is not a finite number.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public setGreen(green: number): this {
-        NumberUtility.assertFiniteNumber(green);
         this.#green = Math.floor(MathUtility.constrain(green, minRGBValue, maxRGBValue));
         return this;
     }
 
+    /**
+     * Set the blue component of the {@link RGB} object.
+     *
+     * @param {number} blue - The blue component value.
+     * This value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {PrimitiveTypeError} - When the given value is not a finite number.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public setBlue(blue: number): this {
-        NumberUtility.assertFiniteNumber(blue);
         this.#blue = Math.floor(MathUtility.constrain(blue, minRGBValue, maxRGBValue));
         return this;
     }
 
+    /**
+     * Set the red, green, and blue components of the {@link RGB} object for a grayscale color.
+     *
+     * @param {number} gray - The component value for red, green, and blue.
+     * This value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {PrimitiveTypeError} - When the given value is not a finite number.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public setGray(gray: number): this {
+        return this.setRed(gray).setGreen(gray).setBlue(gray);
+    }
+
+    /**
+     * Set the optional alpha component of the {@link RGB} object.
+     *
+     * @param {number | undefined} alpha - The alpha component value.
+     * When not `undefined`, this value will be constrained to {@link minRGBValue} and {@link maxRGBValue}, then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {PrimitiveTypeError} - When the given value is not a finite number or undefined.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public setAlpha(alpha: number | undefined): this {
         if (alpha !== undefined) {
-            NumberUtility.assertFiniteNumber(alpha);
             this.#alpha = Math.floor(MathUtility.constrain(alpha, minRGBValue, maxRGBValue));
         } else {
             this.#alpha = undefined;
@@ -59,12 +210,36 @@ export class RGBBuilder {
         return this;
     }
 
+    /**
+     * Set the optional alpha component of the {@link RGB} object with a percentage value, expressed as a floating-point number between 0 and 1, inclusive.
+     *
+     * @see {@link RGBBuilder.setAlpha}
+     *
+     * @param {number} alpha - The alpha component percentage.
+     * This value must be expressed as a floating-point number between 0 and 1, inclusive.
+     * The given value will be multiplied by {@link maxRGBValue}, then passed to {@link RGBBuilder.setAlpha}, where it will be constrained then floored to the nearest integer.
+     *
+     * @returns {this} - The current instance of the {@link RGBBuilder} for method chaining.
+     *
+     * @throws {PrimitiveTypeError} - When the given value is not a finite number or within the range of [0-1].
+     *
+     * @public
+     * @since 0.1.0
+     */
     public setAlphaFromPercentage(alpha: number): this {
         NumberUtility.assertInRange(alpha, 0, 1);
-        this.#alpha = Math.floor(alpha * maxRGBValue);
+        this.setAlpha(alpha * maxRGBValue);
         return this;
     }
 
+    /**
+     * Build the {@link RGB} object with the current state of the {@link RGBBuilder}.
+     *
+     * @returns {RGB} - An {@link RGB} object.
+     *
+     * @public
+     * @since 0.1.0
+     */
     public build(): RGB {
         return {
             red: this.#red,

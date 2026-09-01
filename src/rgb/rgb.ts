@@ -94,7 +94,7 @@ export const rgbSchema = Type.Object(
          * The optional alpha component of the RGB color.
          * When present, must be an integer between 0 and 255, inclusive.
          *
-         * @type {number|undefined}
+         * @type {number | undefined}
          * @readonly
          * @since 0.1.0
          */
