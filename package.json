@@ -1,6 +1,6 @@
 {
   "name": "@blwatkins/color-utils",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "license": "MIT",
   "private": false,
   "description": "A toolkit of library-agnostic TypeScript and JavaScript utilities for creating and managing colors.",
