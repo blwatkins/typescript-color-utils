@@ -20,4 +20,5 @@
  * SPDX-License-Identifier: MIT
  */
 
+export * from './rgb';
 export * from './string';

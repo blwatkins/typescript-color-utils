@@ -6,6 +6,7 @@
   },
 
   "entryPoints": [
+    "./src/rgb/index.ts",
     "./src/string/index.ts"
   ],
 
