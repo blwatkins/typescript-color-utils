@@ -17,15 +17,10 @@ It is a live reflection of my current goals for the project, and it is subject t
 
 ## v0.1.0
 
+### v0.1.0-alpha.0
+
 - [ ] Color string utility
   - [ ] ColorStringUtility assert hex color methods
-- [ ] BaseColor
-- [ ] Generative color selectors
-  - [ ] RGB
-  - [ ] HSL
-    - [ ] Multiple saturation and lightness variations
-- [ ] HexColor selector
-- [ ] Color selector selector
 - [ ] RGB
   - [ ] RGB interface
   - [ ] `RGBBuilder`
@@ -37,22 +32,50 @@ It is a live reflection of my current goals for the project, and it is subject t
 - [ ] Color conversion utility
   - [ ] HSL to style conversion
   - [ ] RGB to style conversion
-- [ ] Palette color interface
-- [ ] Palette interface
+  - [ ] RGB to HSL conversion
+  - [ ] HSL to RGB conversion
+
+### v0.1.0-alpha.1
+
 - [ ] Color Names utilities
   - [ ] Color names fetch via Fetch API and JSON file
   - [ ] Color names cache for user color name override and cached retrieval
+
+### v0.1.0-alpha.2
+
 - [ ] Color contrast utility (chroma.js and cococh)
 - [ ] Color luminance utility (chroma.js)
+
+### v0.1.0-alpha.3
+
+- [ ] Palette color interface
+- [ ] Palette interface
+- [ ] BaseColor
+
+### v0.1.0-alpha.4
+
+- [ ] Generative color selectors
+  - [ ] RGB
+  - [ ] HSL
+    - [ ] Multiple saturation and lightness variations
+- [ ] HexColor selector
+- [ ] Color selector selector
+
+### v0.1.0-alpha.5
+
 - [ ] Palette selector
 - [ ] PaletteColor selector
-- [ ] Base gradient / mapped gradient
+
+### v0.1.0-alpha.6
+
+- [ ] Base gradient / mapped gradient (chroma.js - `chroma.scale`)
+- [ ] 2D / Anchor gradient (may be better suited to typescript-genart-utils)
 
 ## v0.2.0
 
 - [ ] `ColorModeConverter` updates
-  - [ ] RGB to HSL conversion
-  - [ ] HSL to RGB conversion
+  - [ ] Alpha channel updates
+- [ ] chroma.js color mixing - mixing colors of a palette like paints to make new colors in a sketch
 - [ ] Weighted Palette
 - [ ] Weighted Palette selector
 - [ ] Weighted PaletteColor selector
