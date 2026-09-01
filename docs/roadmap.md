@@ -19,6 +19,10 @@ It is a live reflection of my current goals for the project, and it is subject t
 
 ### v0.1.0-alpha.0
 
+- Released on August 31, 2026.
+- [v0.1.0-alpha.0 Documentation](./releases/v0.x/v0.1.x/v0.1.0-alpha.x/v0.1.0-alpha.0/doc/index.html)
+
+
 - [x] Color string utility
   - [x] ColorStringUtility assert hex color methods
 

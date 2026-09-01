@@ -9,7 +9,7 @@ A toolkit of library-agnostic TypeScript and JavaScript utilities for creating a
 
 ## Documentation
 
-- Latest release coming soon!
+- [Latest Release](./doc/index.html)
 - [Documentation by Version Number](./releases.md)
 
 ## History and Origins
