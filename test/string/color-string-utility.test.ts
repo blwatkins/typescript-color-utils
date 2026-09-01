@@ -77,20 +77,20 @@ describe('ColorStringUtility', (): void => {
                 ],
                 expected: undefined
             }
-        ]
+        ];
 
         const scenarios: Scenario[] = [
             ...failureScenarios.map((scenario: Scenario): Scenario => {
                 return {
                     ...scenario,
                     expected: false
-                }
+                };
             }),
             ...successScenarios.map((scenario: Scenario): Scenario => {
                 return {
                     ...scenario,
                     expected: true
-                }
+                };
             })
         ];
 
@@ -168,13 +168,13 @@ describe('ColorStringUtility', (): void => {
                 return {
                     ...scenario,
                     expected: false
-                }
+                };
             }),
             ...successScenarios.map((scenario: Scenario): Scenario => {
                 return {
                     ...scenario,
                     expected: true
-                }
+                };
             })
         ];
 
@@ -223,7 +223,8 @@ describe('ColorStringUtility', (): void => {
                     ...hexColorMixedCaseInputs
                 ],
                 expected: PrimitiveTypeError
-            },{
+            },
+            {
                 label: 'RGB hex color inputs',
                 inputs: [
                     ...hexColorRGBNumberInputs,
@@ -251,13 +252,13 @@ describe('ColorStringUtility', (): void => {
                 return {
                     ...scenario,
                     expected: false
-                }
+                };
             }),
             ...successScenarios.map((scenario: Scenario): Scenario => {
                 return {
                     ...scenario,
                     expected: true
-                }
+                };
             })
         ];
 
