@@ -20,8 +20,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './color-mode';
-export * from './hsl';
-export * from './palette-color';
-export * from './rgb';
 export * from './string';

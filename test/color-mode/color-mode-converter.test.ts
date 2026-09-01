@@ -22,7 +22,7 @@
 
 import { describe, test, expect } from 'vitest';
 
-import { ColorModeConverter } from '../../src/';
+import { ColorModeConverter } from '../../src/color-mode';
 
 describe('ColorModeConverter', (): void => {
     // TODO - transfer test contract from typescript-utils
