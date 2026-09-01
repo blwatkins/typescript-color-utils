@@ -8,7 +8,6 @@
 <div class="col-content">
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
-<li><a href="../modules/string.html">string</a></li>
 <li><a href="" aria-current="page">ColorStringUtility</a></li></ul>
 <h1>Class ColorStringUtility</h1></div>
 <section class="tsd-panel tsd-comment">
@@ -19,7 +18,7 @@
 <h4 class="tsd-anchor-link" id="since">Since<a href="#since" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
 </div></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/0660113611fb3a61636de79e3dcf2fc926fe9d84/src/string/color-string-utility.ts#L34">string/color-string-utility.ts:34</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L36">color-string-utility.ts:36</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-accordion" open><summary class="tsd-accordion-summary tsd-index-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
@@ -33,7 +32,10 @@
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading tsd-anchor-link" id="methods">Methods<a href="#methods" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<div class="tsd-index-list"><a href="#ishexcolor" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color</span></a>
+<div class="tsd-index-list"><a href="#asserthexcolor" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>assert<wbr/>Hex<wbr/>Color</span></a>
+<a href="#asserthexcolorrgb" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>assert<wbr/>Hex<wbr/>Color<wbr/>RGB</span></a>
+<a href="#asserthexcolorrgba" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>assert<wbr/>Hex<wbr/>Color<wbr/>RGBA</span></a>
+<a href="#ishexcolor" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color</span></a>
 <a href="#ishexcolorrgb" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color<wbr/>RGB</span></a>
 <a href="#ishexcolorrgba" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color<wbr/>RGBA</span></a>
 </div></section></div></details></section></section>
@@ -48,15 +50,17 @@
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Get the regular expression for hex colors.</p>
 </div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">RegExp</span></h4><p>Regular expression pattern for validating hex color strings in the format <code>#RRGGBB</code> or <code>#RRGGBBAA</code>.
-Case must be consistent in hex color strings: either all lowercase or all uppercase.</p>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">RegExp</span></h4><ul>
+<li>Regular expression pattern for validating hex color strings in the format <code>#RRGGBB</code> or <code>#RRGGBBAA</code>.
+Case must be consistent in hex color strings: either all lowercase or all uppercase.</li>
+</ul>
 
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-since">
 <h4 class="tsd-anchor-link" id="since-1">Since<a href="#since-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
 </div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/0660113611fb3a61636de79e3dcf2fc926fe9d84/src/string/color-string-utility.ts#L55">string/color-string-utility.ts:55</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L58">color-string-utility.ts:58</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="hexcolorpatternrgb"><code class="tsd-tag">Static</code><span>hex<wbr/>Color<wbr/>Pattern<wbr/>RGB</span><a href="#hexcolorpatternrgb" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -65,15 +69,17 @@ Case must be consistent in hex color strings: either all lowercase or all upperc
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Get the regular expression for hex colors in RGB format.</p>
 </div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">RegExp</span></h4><p>Regular expression pattern for validating hex color strings in the format <code>#RRGGBB</code>.
-Case must be consistent in hex color strings: either all lowercase or all uppercase.</p>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">RegExp</span></h4><ul>
+<li>Regular expression pattern for validating hex color strings in the format <code>#RRGGBB</code>.
+Case must be consistent in hex color strings: either all lowercase or all uppercase.</li>
+</ul>
 
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-since">
 <h4 class="tsd-anchor-link" id="since-2">Since<a href="#since-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
 </div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/0660113611fb3a61636de79e3dcf2fc926fe9d84/src/string/color-string-utility.ts#L68">string/color-string-utility.ts:68</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L71">color-string-utility.ts:71</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="hexcolorpatternrgba"><code class="tsd-tag">Static</code><span>hex<wbr/>Color<wbr/>Pattern<wbr/>RGBA</span><a href="#hexcolorpatternrgba" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -82,18 +88,113 @@ Case must be consistent in hex color strings: either all lowercase or all upperc
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Get the regular expression for hex colors in RGBA format.</p>
 </div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">RegExp</span></h4><p>Regular expression pattern for validating hex color strings in the format <code>#RRGGBBAA</code>.
-Case must be consistent in hex color strings: either all lowercase or all uppercase.</p>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">RegExp</span></h4><ul>
+<li>Regular expression pattern for validating hex color strings in the format <code>#RRGGBBAA</code>.
+Case must be consistent in hex color strings: either all lowercase or all uppercase.</li>
+</ul>
 
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-since">
 <h4 class="tsd-anchor-link" id="since-3">Since<a href="#since-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
 </div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/0660113611fb3a61636de79e3dcf2fc926fe9d84/src/string/color-string-utility.ts#L81">string/color-string-utility.ts:81</a></li></ul></aside></div></li></ul></section></section></details>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L84">color-string-utility.ts:84</a></li></ul></aside></div></li></ul></section></section></details>
 <details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
 <h2 class="tsd-anchor-link" id="methods-1">Methods<a href="#methods-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
 <section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="asserthexcolor"><code class="tsd-tag">Static</code><span>assert<wbr/>Hex<wbr/>Color</span><a href="#asserthexcolor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="asserthexcolor-1"><span class="tsd-kind-call-signature">assertHexColor</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">input</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">message</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-keyword">asserts</span> <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span><a href="#asserthexcolor-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Validate and assert that the given input matches the <a href="#hexcolorpattern" class="tsd-kind-accessor">ColorStringUtility.hexColorPattern</a> pattern.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">input</span>: <span class="tsd-signature-type">unknown</span></span>
+<div class="tsd-comment tsd-typography"><p>The input to check.</p>
+</div></li>
+<li><span><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">message</span>: <span class="tsd-signature-type">string</span></span>
+<div class="tsd-comment tsd-typography"><p>Optional message for the error thrown when the input does not match the <a href="#hexcolorpattern" class="tsd-kind-accessor">ColorStringUtility.hexColorPattern</a> pattern.</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-keyword">asserts</span> <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span></h4><p>Asserts that the given input matches the <a href="#hexcolorpattern" class="tsd-kind-accessor">ColorStringUtility.hexColorPattern</a> pattern.</p>
+
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-see">
+<h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><a href="#ishexcolor" class="tsd-kind-method">ColorStringUtility.isHexColor</a></p>
+</div>
+<div class="tsd-tag-throws">
+<h4 class="tsd-anchor-link" id="throws">Throws<a href="#throws" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>When the input does not match the <a href="#hexcolorpattern" class="tsd-kind-accessor">ColorStringUtility.hexColorPattern</a> pattern.</p>
+</div>
+<div class="tsd-tag-since">
+<h4 class="tsd-anchor-link" id="since-4">Since<a href="#since-4" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
+</div></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L103">color-string-utility.ts:103</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="asserthexcolorrgb"><code class="tsd-tag">Static</code><span>assert<wbr/>Hex<wbr/>Color<wbr/>RGB</span><a href="#asserthexcolorrgb" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="asserthexcolorrgb-1"><span class="tsd-kind-call-signature">assertHexColorRGB</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">input</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">message</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-keyword">asserts</span> <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span><a href="#asserthexcolorrgb-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Validate and assert that the given input matches the <a href="#hexcolorpatternrgb" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGB</a> pattern.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">input</span>: <span class="tsd-signature-type">unknown</span></span>
+<div class="tsd-comment tsd-typography"><p>The input to check.</p>
+</div></li>
+<li><span><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">message</span>: <span class="tsd-signature-type">string</span></span>
+<div class="tsd-comment tsd-typography"><p>Optional message for the error thrown when the input does not match the <a href="#hexcolorpatternrgb" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGB</a> pattern.</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-keyword">asserts</span> <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span></h4><p>Asserts that the given input matches the <a href="#hexcolorpatternrgb" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGB</a> pattern.</p>
+
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-see">
+<h4 class="tsd-anchor-link" id="see-1">See<a href="#see-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><a href="#ishexcolorrgb" class="tsd-kind-method">ColorStringUtility.isHexColorRGB</a></p>
+</div>
+<div class="tsd-tag-throws">
+<h4 class="tsd-anchor-link" id="throws-1">Throws<a href="#throws-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>When the input does not match the <a href="#hexcolorpatternrgb" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGB</a> pattern.</p>
+</div>
+<div class="tsd-tag-since">
+<h4 class="tsd-anchor-link" id="since-5">Since<a href="#since-5" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
+</div></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L128">color-string-utility.ts:128</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="asserthexcolorrgba"><code class="tsd-tag">Static</code><span>assert<wbr/>Hex<wbr/>Color<wbr/>RGBA</span><a href="#asserthexcolorrgba" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="asserthexcolorrgba-1"><span class="tsd-kind-call-signature">assertHexColorRGBA</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">input</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">message</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-keyword">asserts</span> <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span><a href="#asserthexcolorrgba-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Validate and assert that the given input matches the <a href="#hexcolorpatternrgba" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGBA</a> pattern.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">input</span>: <span class="tsd-signature-type">unknown</span></span>
+<div class="tsd-comment tsd-typography"><p>The input to check.</p>
+</div></li>
+<li><span><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">message</span>: <span class="tsd-signature-type">string</span></span>
+<div class="tsd-comment tsd-typography"><p>Optional message for the error thrown when the input does not match the <a href="#hexcolorpatternrgba" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGBA</a> pattern.</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-keyword">asserts</span> <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span></h4><p>Asserts that the given input matches the <a href="#hexcolorpatternrgba" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGBA</a> pattern.</p>
+
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-see">
+<h4 class="tsd-anchor-link" id="see-2">See<a href="#see-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p><a href="#ishexcolorrgba" class="tsd-kind-method">ColorStringUtility.isHexColorRGBA</a></p>
+</div>
+<div class="tsd-tag-throws">
+<h4 class="tsd-anchor-link" id="throws-2">Throws<a href="#throws-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>When the input does not match the <a href="#hexcolorpatternrgba" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGBA</a> pattern.</p>
+</div>
+<div class="tsd-tag-since">
+<h4 class="tsd-anchor-link" id="since-6">Since<a href="#since-6" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
+</div></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L153">color-string-utility.ts:153</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="ishexcolor"><code class="tsd-tag">Static</code><span>is<wbr/>Hex<wbr/>Color</span><a href="#ishexcolor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -108,14 +209,16 @@ Case must be consistent in hex color strings: either all lowercase or all upperc
 <li><span><span class="tsd-kind-parameter">input</span>: <span class="tsd-signature-type">unknown</span></span>
 <div class="tsd-comment tsd-typography"><p>The input to check.</p>
 </div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span></h4><p><code>true</code> if the given input matches the <a href="#hexcolorpattern" class="tsd-kind-accessor">ColorStringUtility.hexColorPattern</a> pattern; <code>false</code> otherwise.</p>
+<h4 class="tsd-returns-title">Returns <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span></h4><ul>
+<li><code>true</code> if the given input matches the <a href="#hexcolorpattern" class="tsd-kind-accessor">ColorStringUtility.hexColorPattern</a> pattern; <code>false</code> otherwise.</li>
+</ul>
 
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-since">
-<h4 class="tsd-anchor-link" id="since-4">Since<a href="#since-4" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
+<h4 class="tsd-anchor-link" id="since-7">Since<a href="#since-7" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
 </div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/0660113611fb3a61636de79e3dcf2fc926fe9d84/src/string/color-string-utility.ts#L95">string/color-string-utility.ts:95</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L173">color-string-utility.ts:173</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="ishexcolorrgb"><code class="tsd-tag">Static</code><span>is<wbr/>Hex<wbr/>Color<wbr/>RGB</span><a href="#ishexcolorrgb" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -130,14 +233,16 @@ Case must be consistent in hex color strings: either all lowercase or all upperc
 <li><span><span class="tsd-kind-parameter">input</span>: <span class="tsd-signature-type">unknown</span></span>
 <div class="tsd-comment tsd-typography"><p>The input to check.</p>
 </div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span></h4><p><code>true</code> if the given input matches the <a href="#hexcolorpatternrgb" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGB</a> pattern; <code>false</code> otherwise.</p>
+<h4 class="tsd-returns-title">Returns <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span></h4><ul>
+<li><code>true</code> if the given input matches the <a href="#hexcolorpatternrgb" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGB</a> pattern; <code>false</code> otherwise.</li>
+</ul>
 
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-since">
-<h4 class="tsd-anchor-link" id="since-5">Since<a href="#since-5" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
+<h4 class="tsd-anchor-link" id="since-8">Since<a href="#since-8" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
 </div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/0660113611fb3a61636de79e3dcf2fc926fe9d84/src/string/color-string-utility.ts#L109">string/color-string-utility.ts:109</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L187">color-string-utility.ts:187</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="ishexcolorrgba"><code class="tsd-tag">Static</code><span>is<wbr/>Hex<wbr/>Color<wbr/>RGBA</span><a href="#ishexcolorrgba" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -152,14 +257,16 @@ Case must be consistent in hex color strings: either all lowercase or all upperc
 <li><span><span class="tsd-kind-parameter">input</span>: <span class="tsd-signature-type">unknown</span></span>
 <div class="tsd-comment tsd-typography"><p>The input to check.</p>
 </div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span></h4><p><code>true</code> if the given input matches the <a href="#hexcolorpatternrgba" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGBA</a> pattern; <code>false</code> otherwise.</p>
+<h4 class="tsd-returns-title">Returns <span class="tsd-kind-parameter">input</span> <span class="tsd-signature-keyword">is</span> <span class="tsd-signature-type">string</span></h4><ul>
+<li><code>true</code> if the given input matches the <a href="#hexcolorpatternrgba" class="tsd-kind-accessor">ColorStringUtility.hexColorPatternRGBA</a> pattern; <code>false</code> otherwise.</li>
+</ul>
 
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-since">
-<h4 class="tsd-anchor-link" id="since-6">Since<a href="#since-6" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
+<h4 class="tsd-anchor-link" id="since-9">Since<a href="#since-9" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>0.1.0</p>
 </div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/0660113611fb3a61636de79e3dcf2fc926fe9d84/src/string/color-string-utility.ts#L123">string/color-string-utility.ts:123</a></li></ul></aside></div></li></ul></section></section></details></div>
+<li>Defined in <a href="https://github.com/blwatkins/typescript-color-utils/blob/21350d81eab9b96452abcb426c1f9605288a3b78/src/string/color-string-utility.ts#L201">color-string-utility.ts:201</a></li></ul></aside></div></li></ul></section></section></details></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -181,7 +288,7 @@ Case must be consistent in hex color strings: either all lowercase or all upperc
 <details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Accessors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Accessors</summary>
 <div><a href="#hexcolorpattern"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>hex<wbr/>Color<wbr/>Pattern</span></a><a href="#hexcolorpatternrgb"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>hex<wbr/>Color<wbr/>Pattern<wbr/>RGB</span></a><a href="#hexcolorpatternrgba"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>hex<wbr/>Color<wbr/>Pattern<wbr/>RGBA</span></a></div></details>
 <details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Methods</summary>
-<div><a href="#ishexcolor"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color</span></a><a href="#ishexcolorrgb"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color<wbr/>RGB</span></a><a href="#ishexcolorrgba"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color<wbr/>RGBA</span></a></div></details></div></details></div>
+<div><a href="#asserthexcolor"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>assert<wbr/>Hex<wbr/>Color</span></a><a href="#asserthexcolorrgb"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>assert<wbr/>Hex<wbr/>Color<wbr/>RGB</span></a><a href="#asserthexcolorrgba"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>assert<wbr/>Hex<wbr/>Color<wbr/>RGBA</span></a><a href="#ishexcolor"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color</span></a><a href="#ishexcolorrgb"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color<wbr/>RGB</span></a><a href="#ishexcolorrgba"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Hex<wbr/>Color<wbr/>RGBA</span></a></div></details></div></details></div>
 <div class="site-menu">
 <nav id="tsd-sidebar-links" class="tsd-navigation"><a href="https://blwatkins.github.io/typescript-color-utils/" class="tsd-nav-link">TypeScript Color Utilities</a><a href="https://blwatkins.github.io/" class="tsd-nav-link">Brittni Watkins</a></nav>
 <nav class="tsd-navigation"><a href="../modules.html">@blwatkins/color-utils - v0.1.0-alpha.0</a>

@@ -22,10 +22,8 @@
 
 import { Type, type Static } from 'typebox';
 
-import { StringUtility, discriminatedSchema } from '@blwatkins/utils';
+import { StringUtility } from '@blwatkins/utils';
 
-import { Discriminators } from '../discriminator';
-import { rgbSchema } from '../rgb';
 import { ColorStringUtility } from '../string';
 
 /**
@@ -33,40 +31,18 @@ import { ColorStringUtility } from '../string';
  *
  * @since 0.1.0
  */
-export const paletteColorSchema = Type.Intersect([
-    discriminatedSchema,
-    Type.Object(
-        {
-            hex: Type.Readonly(Type.String({
-                pattern: ColorStringUtility.hexColorPatternRGB
-            })),
+export const paletteColorSchema = Type.Object(
+    {
+        hex: Type.Readonly(Type.String({
+            pattern: ColorStringUtility.hexColorPatternRGB
+        })),
 
-            name: Type.Readonly(Type.String({
-                pattern: StringUtility.singleLineTrimmedPattern
-            })),
-
-            luminance: Type.Optional(Type.Readonly(Type.Number({
-                minimum: 0,
-                maximum: 1
-            }))),
-
-            rgb: Type.Optional(Type.Readonly(rgbSchema)),
-
-            // TODO - Create and use HSL typebox schema
-            hsl: Type.Optional(Type.Readonly(Type.Object({}))),
-
-            /**
-             * The discriminator for the palette color object.
-             *
-             * @type {Discriminators.PaletteColor}
-             * @readonly
-             * @since 0.1.0
-             */
-            discriminator: Type.Readonly(Type.Literal(Discriminators.PaletteColor))
-        },
-        { additionalProperties: false }
-    )
-]);
+        name: Type.Readonly(Type.String({
+            pattern: StringUtility.singleLineTrimmedPattern
+        }))
+    },
+    { additionalProperties: false }
+);
 
 /**
  * Type definition for a palette color object.

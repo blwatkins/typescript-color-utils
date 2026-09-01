@@ -4,7 +4,7 @@ A toolkit of library-agnostic TypeScript and JavaScript utilities for creating a
 
 ## Documentation
 
-- Latest release coming soon!
+- [Latest Release](https://blwatkins.github.io/typescript-color-utils/doc/index.html)
 - [Documentation by Version Number](https://blwatkins.github.io/typescript-color-utils/releases.html)
 
 ## History and Origins

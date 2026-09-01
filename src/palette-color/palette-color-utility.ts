@@ -22,9 +22,7 @@
 
 import Value from 'typebox/value';
 
-import { DiscriminatorRegistry } from '@blwatkins/utils';
-
-import { Discriminators } from '../discriminator';
+import { SchemaTypeError, StringUtility } from '@blwatkins/utils';
 
 import { PaletteColor, paletteColorSchema } from './palette-color';
 
@@ -46,27 +44,41 @@ export class PaletteColorUtility {
     }
 
     /**
+     * Validate and assert that the given input is a {@link PaletteColor} object.
+     *
+     * @see {@link PaletteColor.isPaletteColor}
+     *
+     * @param {unknown} input - The input to check.
+     * @param {string|undefined} message - Optional message for the error thrown when the input is not a valid {@link PaletteColor}.
+     *
+     * @returns {asserts input is PaletteColor} Asserts that the given input is a {@link PaletteColor}.
+     *
+     * @throws {SchemaTypeError} When the given input is not a valid {@link PaletteColor}.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public static assertPaletteColor(input: unknown, message?: string): asserts input is PaletteColor {
+        if (!PaletteColorUtility.isPaletteColor(input)) {
+            if (StringUtility.isSingleLineTrimmedString(message)) {
+                throw new SchemaTypeError(message);
+            }
+
+            throw new SchemaTypeError('Input does not match schema requirements for PaletteColor.');
+        }
+    }
+
+    /**
      * Is the given input a {@link PaletteColor} object?
      *
      * @param {unknown} input - The input to check.
      *
      * @returns {input is PaletteColor} - `true` if the input is a {@link PaletteColor} object, `false` otherwise.
      *
-     * @type {(unknown) => input is PaletteColor}
+     * @public
      * @since 0.1.0
      */
-    public static readonly isPaletteColor: (input: unknown) => input is PaletteColor = DiscriminatorRegistry.register<PaletteColor>({
-        discriminator: Discriminators.PaletteColor,
-        validator: (input: unknown): input is PaletteColor => {
-            return Value.Check(paletteColorSchema, input);
-        }
-    });
-
-    public static validate(input: unknown): input is PaletteColor {
-        // TODO - Are the hex, RBG, and HSL of the palette color constant, if present.
-        // TODO - Should this be called in isPaletteColor, or should they be called separate?
-        // TODO - [BLOCKED] Requires ColorModeConverter class
-        console.log(input);
-        return false;
+    public static isPaletteColor(input: unknown): input is PaletteColor {
+        return Value.Check(paletteColorSchema, input);
     }
 }

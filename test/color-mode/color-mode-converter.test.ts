@@ -20,11 +20,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { describe, expect, test } from 'vitest';
+import { describe, test, expect } from 'vitest';
 
-import { ColorModeConverter } from '../../src/color-mode/color-mode-converter';
+import { ColorModeConverter } from '../../src/color-mode';
 
 describe('ColorModeConverter', (): void => {
+    // TODO - transfer test contract from typescript-utils
     describe('new ColorModeConverter()', (): void => {
         describe('Runtime behavior guards', (): void => {
             test('Constructor should throw an error when instantiated at runtime', (): void => {
@@ -32,26 +33,5 @@ describe('ColorModeConverter', (): void => {
                 expect((): ColorModeConverter => new RuntimeConstructor()).toThrow(Error);
             });
         });
-    });
-
-    describe('rgbToHex', (): void => {
-        describe('rgbToHex(value) should return a grayscale hex color', (): void => {
-            test.each([
-                { input: -1, expected: '#000000' },
-                { input: -Number.EPSILON, expected: '#000000' },
-                { input: 0, expected: '#000000' },
-                { input: 9, expected: '#090909' },
-                { input: 15, expected: '#0F0F0F' },
-                { input: 60, expected: '#3C3C3C' },
-                { input: 100, expected: '#646464' },
-                { input: 255, expected: '#FFFFFF' },
-                { input: (255 + Number.EPSILON), expected: '#FFFFFF' },
-                { input: 256, expected: '#FFFFFF' }
-            ])('%# - rgbToHex($input) should return $expected', ({ input, expected }: { input: number; expected: string; }): void => {
-                expect(ColorModeConverter.rgbToHex(input)).toBe(expected);
-            });
-        });
-
-        test.todo('Input validation');
     });
 });

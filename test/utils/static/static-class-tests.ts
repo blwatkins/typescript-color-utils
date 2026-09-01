@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024-2026 Brittni Watkins.
+ * Copyright (c) 2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -20,23 +20,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-/**
- * Valid discriminators for package types and interfaces.
- *
- * @since 0.1.0
- */
-export enum Discriminators {
-    /**
-     * Discriminator value for the PaletteColor type.
-     *
-     * @since 0.1.0
-     */
-    PaletteColor = '@blwatkins/color-utils:PaletteColor',
+import { describe, test, expect } from 'vitest';
 
-    /**
-     * Discriminator value for the RGB type.
-     *
-     * @since 0.1.0
-     */
-    RGB = '@blwatkins/color-utils:RGB'
+export function testStaticClassConstructor(name: string, Constructor: new() => unknown, ErrorType: new () => Error): void {
+    describe(`new ${name}()`, (): void => {
+        describe('Runtime behavior guards', (): void => {
+            test(`Constructor should throw ${ErrorType.name} when instantiated at runtime`, (): void => {
+                expect((): unknown => new Constructor()).toThrow(ErrorType);
+            });
+        });
+    });
 }
