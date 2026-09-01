@@ -22,30 +22,30 @@
 
 import { Type, type Static } from 'typebox';
 
-export const minRGBComponent: 0 = 0 as const;
+export const minRGBValue: 0 = 0 as const;
 
-export const maxRGBComponent: 255 = 255 as const;
+export const maxRGBValue: 255 = 255 as const;
 
 export const rgbSchema = Type.Object(
     {
         red: Type.Integer({
-            minimum: minRGBComponent,
-            maximum: maxRGBComponent
+            minimum: minRGBValue,
+            maximum: maxRGBValue
         }),
 
         green: Type.Integer({
-            minimum: minRGBComponent,
-            maximum: maxRGBComponent
+            minimum: minRGBValue,
+            maximum: maxRGBValue
         }),
 
         blue: Type.Integer({
-            minimum: minRGBComponent,
-            maximum: maxRGBComponent
+            minimum: minRGBValue,
+            maximum: maxRGBValue
         }),
 
         alpha: Type.Optional(Type.Integer({
-            minimum: minRGBComponent,
-            maximum: maxRGBComponent
+            minimum: minRGBValue,
+            maximum: maxRGBValue
         }))
     },
     { additionalProperties: false }

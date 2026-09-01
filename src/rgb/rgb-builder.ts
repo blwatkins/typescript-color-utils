@@ -22,7 +22,7 @@
 
 import { MathUtility, NumberUtility } from '@blwatkins/utils';
 
-import { RGB, maxRGBComponent, minRGBComponent } from './rgb';
+import { RGB, maxRGBValue, minRGBValue } from './rgb';
 
 export class RGBBuilder {
     #red: number = 0;
@@ -32,26 +32,26 @@ export class RGBBuilder {
 
     public setRed(red: number): this {
         NumberUtility.assertFiniteNumber(red);
-        this.#red = Math.floor(MathUtility.constrain(red, minRGBComponent, maxRGBComponent));
+        this.#red = Math.floor(MathUtility.constrain(red, minRGBValue, maxRGBValue));
         return this;
     }
 
     public setGreen(green: number): this {
         NumberUtility.assertFiniteNumber(green);
-        this.#green = Math.floor(MathUtility.constrain(green, minRGBComponent, maxRGBComponent));
+        this.#green = Math.floor(MathUtility.constrain(green, minRGBValue, maxRGBValue));
         return this;
     }
 
     public setBlue(blue: number): this {
         NumberUtility.assertFiniteNumber(blue);
-        this.#blue = Math.floor(MathUtility.constrain(blue, minRGBComponent, maxRGBComponent));
+        this.#blue = Math.floor(MathUtility.constrain(blue, minRGBValue, maxRGBValue));
         return this;
     }
 
     public setAlpha(alpha: number | undefined): this {
         if (alpha !== undefined) {
             NumberUtility.assertFiniteNumber(alpha);
-            this.#alpha = Math.floor(MathUtility.constrain(alpha, minRGBComponent, maxRGBComponent));
+            this.#alpha = Math.floor(MathUtility.constrain(alpha, minRGBValue, maxRGBValue));
         } else {
             this.#alpha = undefined;
         }
@@ -61,7 +61,7 @@ export class RGBBuilder {
 
     public setAlphaFromPercentage(alpha: number): this {
         NumberUtility.assertInRange(alpha, 0, 1);
-        this.#alpha = Math.floor(alpha * maxRGBComponent);
+        this.#alpha = Math.floor(alpha * maxRGBValue);
         return this;
     }
 
