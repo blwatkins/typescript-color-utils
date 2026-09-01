@@ -19,3 +19,6 @@
  *
  * SPDX-License-Identifier: MIT
  */
+
+export * from './palette-color';
+export * from './palette-color-utility';

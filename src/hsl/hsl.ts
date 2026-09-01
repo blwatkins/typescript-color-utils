@@ -20,14 +20,31 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { describe, test, expect } from 'vitest';
+import { Type, type Static } from 'typebox';
 
-import { Discriminators } from '../../src';
+export const hslSchema = Type.Object(
+    {
+        hue: Type.Integer({
+            minimum: 0,
+            maximum: 360
+        }),
 
-describe('Discriminators', (): void => {
-    test('All discriminators should be unique', (): void => {
-        const discriminatorsArray: Discriminators[] = Array.from(Object.values(Discriminators));
-        const uniqueDiscriminators = new Set(discriminatorsArray);
-        expect(uniqueDiscriminators.size).toBe(discriminatorsArray.length);
-    });
-});
+        saturation: Type.Integer({
+            minimum: 0,
+            maximum: 100
+        }),
+
+        lightness: Type.Integer({
+            minimum: 0,
+            maximum: 100
+        }),
+
+        alpha: Type.Optional(Type.Number({
+            minimum: 0,
+            maximum: 1
+        }))
+    },
+    { additionalProperties: false }
+);
+
+export type HSL = Static<typeof hslSchema>;

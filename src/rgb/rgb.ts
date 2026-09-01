@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024-2026 Brittni Watkins.
+ * Copyright (c) 2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -22,102 +22,33 @@
 
 import { Type, type Static } from 'typebox';
 
-import { discriminatedSchema } from '@blwatkins/utils';
+export const minRGBComponent: 0 = 0 as const;
 
-import { Discriminators } from '../discriminator';
+export const maxRGBComponent: 255 = 255 as const;
 
-/**
- * Minimum value for an RGB component.
- *
- * @type {0}
- * @since 0.1.0
- */
-export const minRGBValue: 0 = 0 as const;
+export const rgbSchema = Type.Object(
+    {
+        red: Type.Integer({
+            minimum: minRGBComponent,
+            maximum: maxRGBComponent
+        }),
 
-/**
- * Maximum value for an RGB component.
- *
- * @type {255}
- * @since 0.1.0
- */
-export const maxRGBValue: 255 = 255 as const;
+        green: Type.Integer({
+            minimum: minRGBComponent,
+            maximum: maxRGBComponent
+        }),
 
-/**
- * TypeBox schema to validate a {@link RGB} object.
- *
- * @since 0.1.0
- */
-export const rgbSchema = Type.Intersect([
-    discriminatedSchema,
-    Type.Object(
-        {
-            /**
-             * The red component of the RGB color.
-             * Must be an integer between 0 and 255.
-             *
-             * @type {number}
-             * @readonly
-             * @since 0.1.0
-             */
-            red: Type.Readonly(Type.Integer({
-                minimum: minRGBValue,
-                maximum: maxRGBValue
-            })),
+        blue: Type.Integer({
+            minimum: minRGBComponent,
+            maximum: maxRGBComponent
+        }),
 
-            /**
-             * The green component of the RGB color.
-             * Must be an integer between 0 and 255.
-             *
-             * @type {number}
-             * @readonly
-             * @since 0.1.0
-             */
-            green: Type.Readonly(Type.Integer({
-                minimum: minRGBValue,
-                maximum: maxRGBValue
-            })),
+        alpha: Type.Optional(Type.Integer({
+            minimum: minRGBComponent,
+            maximum: maxRGBComponent
+        }))
+    },
+    { additionalProperties: false }
+);
 
-            /**
-             * The blue component of the RGB color.
-             * Must be an integer between 0 and 255.
-             *
-             * @type {number}
-             * @readonly
-             * @since 0.1.0
-             */
-            blue: Type.Readonly(Type.Integer({
-                minimum: minRGBValue,
-                maximum: maxRGBValue
-            })),
-
-            /**
-             * The optional alpha component of the RGB color.
-             * When present, must be an integer between 0 and 255.
-             *
-             * @type {number | undefined}
-             * @readonly
-             * @since 0.1.0
-             */
-            alpha: Type.Optional(Type.Readonly(Type.Integer({
-                minimum: minRGBValue,
-                maximum: maxRGBValue
-            }))),
-
-            /**
-             * The discriminator for the RGB object.
-             *
-             * @type {Discriminators.RGB}
-             * @readonly
-             */
-            discriminator: Type.Readonly(Type.Literal(Discriminators.RGB))
-        },
-        { additionalProperties: false }
-    )
-]);
-
-/**
- * Type definition for an RGB color object.
- *
- * @since 0.1.0
- */
 export type RGB = Static<typeof rgbSchema>;

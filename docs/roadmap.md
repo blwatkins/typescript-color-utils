@@ -4,7 +4,7 @@ layout: custom-post
 author:
   - Brittni Watkins
 date: 2026-08-28
-modified_date: 2026-08-28
+modified_date: 2026-08-31
 toc: true
 read_time: false
 description: "Roadmap for the TypeScript Color Utilities (@blwatkins/color-utils) npm package."
@@ -17,27 +17,68 @@ It is a live reflection of my current goals for the project, and it is subject t
 
 ## v0.1.0
 
+### v0.1.0-alpha.0
+
 - [x] Color string utility
-- [ ] Palette color interface
-- [ ] Palette interface
+  - [x] ColorStringUtility assert hex color methods
+
+### v0.1.0-alpha.1
+
+- [ ] RGB
+  - [ ] RGB interface
+  - [ ] `RGBBuilder`
+  - [ ] `RGBUtility`
+- [ ] HSL
+  - [ ] HSL interface
+  - [ ] `HSLBuilder`
+  - [ ] `HSLUtility`
+- [ ] Color conversion utility
+  - [ ] HSL to style conversion
+  - [ ] RGB to style conversion
+  - [ ] RGB to HSL conversion
+  - [ ] HSL to RGB conversion
+
+### v0.1.0-alpha.2
+
 - [ ] Color Names utilities
   - [ ] Color names fetch via Fetch API and JSON file
   - [ ] Color names cache for user color name override and cached retrieval
-- [ ] Color conversion utility
-- [ ] Color contrast utility
-- [ ] Color luminance utility
-- [ ] Palette selector
-- [ ] PaletteColor selector
-- [ ] HexColor selector
+
+### v0.1.0-alpha.3
+
+- [ ] Color contrast utility (chroma.js and cococh)
+- [ ] Color luminance utility (chroma.js)
+
+### v0.1.0-alpha.4
+
+- [ ] Palette color interface
+- [ ] Palette interface
 - [ ] BaseColor
+
+### v0.1.0-alpha.5
+
 - [ ] Generative color selectors
   - [ ] RGB
   - [ ] HSL
     - [ ] Multiple saturation and lightness variations
-- [ ] Base gradient / mapped gradient
+- [ ] HexColor selector
+- [ ] Color selector selector
+
+### v0.1.0-alpha.6
+
+- [ ] Palette selector
+- [ ] PaletteColor selector
+
+### v0.1.0-alpha.7
+
+- [ ] Base gradient / mapped gradient (chroma.js - `chroma.scale`)
+- [ ] 2D / Anchor gradient (may be better suited to typescript-genart-utils)
 
 ## v0.2.0
 
+- [ ] `ColorModeConverter` updates
+  - [ ] Alpha channel updates
+- [ ] chroma.js color mixing - mixing colors of a palette like paints to make new colors in a sketch
 - [ ] Weighted Palette
 - [ ] Weighted Palette selector
 - [ ] Weighted PaletteColor selector

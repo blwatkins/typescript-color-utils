@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024-2026 Brittni Watkins.
+ * Copyright (c) 2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -22,4 +22,3 @@
 
 export * from './rgb';
 export * from './rgb-builder';
-export * from './rgb-utility';

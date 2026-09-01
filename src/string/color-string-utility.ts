@@ -20,7 +20,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { StringUtility } from '@blwatkins/utils';
+import { PrimitiveTypeError, StaticInstanceError, StringUtility } from '@blwatkins/utils';
 
 const regularExpressions = {
     hexColor: /^(#[A-F0-9]{6}(?:[A-F0-9]{2})?|#[a-f0-9]{6}(?:[a-f0-9]{2})?)$/,
@@ -37,12 +37,13 @@ export class ColorStringUtility {
     /**
      * Private constructor.
      *
-     * @throws {Error} - ColorStringUtility is a static class and cannot be instantiated.
+     * @throws {StaticInstanceError} When class is instantiated.
+     * {@link ColorStringUtility} is a static class and cannot be instantiated.
      *
      * @private
      */
     private constructor() {
-        throw new Error('ColorStringUtility is a static class and cannot be instantiated.');
+        throw new StaticInstanceError('ColorStringUtility is a static class and cannot be instantiated.');
     }
 
     /**
@@ -82,6 +83,81 @@ export class ColorStringUtility {
      */
     public static get hexColorPatternRGBA(): RegExp {
         return regularExpressions.hexColorRGBA;
+    }
+
+    /**
+     * Validate and assert that the given input matches the {@link ColorStringUtility.hexColorPattern} pattern.
+     *
+     * @see {@link ColorStringUtility.isHexColor}
+     *
+     * @param {unknown} input - The input to check.
+     * @param {string|undefined} message - Optional message for the error thrown when the input does not match the {@link ColorStringUtility.hexColorPattern} pattern.
+     *
+     * @returns {asserts input is string} Asserts that the given input matches the {@link ColorStringUtility.hexColorPattern} pattern.
+     *
+     * @throws {PrimitiveTypeError} When the input does not match the {@link ColorStringUtility.hexColorPattern} pattern.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public static assertHexColor(input: unknown, message?: string): asserts input is string {
+        if (!ColorStringUtility.isHexColor(input)) {
+            if (StringUtility.isSingleLineTrimmedString(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError(`Expected a hex color string, but received: ${typeof input}.`);
+        }
+    }
+
+    /**
+     * Validate and assert that the given input matches the {@link ColorStringUtility.hexColorPatternRGB} pattern.
+     *
+     * @see {@link ColorStringUtility.isHexColorRGB}
+     *
+     * @param {unknown} input - The input to check.
+     * @param {string|undefined} message - Optional message for the error thrown when the input does not match the {@link ColorStringUtility.hexColorPatternRGB} pattern.
+     *
+     * @returns {asserts input is string} Asserts that the given input matches the {@link ColorStringUtility.hexColorPatternRGB} pattern.
+     *
+     * @throws {PrimitiveTypeError} When the input does not match the {@link ColorStringUtility.hexColorPatternRGB} pattern.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public static assertHexColorRGB(input: unknown, message?: string): asserts input is string {
+        if (!ColorStringUtility.isHexColorRGB(input)) {
+            if (StringUtility.isSingleLineTrimmedString(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError(`Expected a hex color RGB string, but received: ${typeof input}.`);
+        }
+    }
+
+    /**
+     * Validate and assert that the given input matches the {@link ColorStringUtility.hexColorPatternRGBA} pattern.
+     *
+     * @see {@link ColorStringUtility.isHexColorRGBA}
+     *
+     * @param {unknown} input - The input to check.
+     * @param {string|undefined} message - Optional message for the error thrown when the input does not match the {@link ColorStringUtility.hexColorPatternRGBA} pattern.
+     *
+     * @returns {asserts input is string} Asserts that the given input matches the {@link ColorStringUtility.hexColorPatternRGBA} pattern.
+     *
+     * @throws {PrimitiveTypeError} When the input does not match the {@link ColorStringUtility.hexColorPatternRGBA} pattern.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public static assertHexColorRGBA(input: unknown, message?: string): asserts input is string {
+        if (!ColorStringUtility.isHexColorRGBA(input)) {
+            if (StringUtility.isSingleLineTrimmedString(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError(`Expected a hex color RGBA string, but received: ${typeof input}.`);
+        }
     }
 
     /**

@@ -22,7 +22,11 @@
 
 import { describe, test, expect } from 'vitest';
 
+import { PrimitiveTypeError, StaticInstanceError } from '@blwatkins/utils';
+
 import { ColorStringUtility } from '../../src';
+
+import { testAssertMethod } from '../utils/assert/assert-tests';
 
 import {
     hexColorFailureInputs,
@@ -37,33 +41,23 @@ import {
 } from '../utils/input/color-string-hex-inputs';
 
 import { emptyStringInputs, nonStringInputs } from '../utils/input/string-inputs';
+import { testStaticClassConstructor } from '../utils/static/static-class-tests';
 import { Scenario, TestCase, buildTestCases } from '../utils/test-case/test-case';
 
 describe('ColorStringUtility', (): void => {
-    describe('new ColorStringUtility()', (): void => {
-        describe('Runtime behavior guards', (): void => {
-            test('Constructor should throw an error when instantiated at runtime', (): void => {
-                const RuntimeConstructor = ColorStringUtility as unknown as new () => ColorStringUtility;
-                expect((): ColorStringUtility => new RuntimeConstructor()).toThrow(Error);
-            });
-        });
-    });
+    testStaticClassConstructor('ColorStringUtility', ColorStringUtility as unknown as new () => unknown, StaticInstanceError);
 
-    describe('isHexColor', (): void => {
-        const scenarios: Scenario[] = [
+    describe('HexColor', (): void => {
+        const failureScenarios: Scenario[] = [
             {
                 label: 'Non-string inputs',
-                inputs: [
-                    ...nonStringInputs
-                ],
-                expected: false
+                inputs: nonStringInputs,
+                expected: PrimitiveTypeError
             },
             {
                 label: 'Empty string inputs',
-                inputs: [
-                    ...emptyStringInputs
-                ],
-                expected: false
+                inputs: emptyStringInputs,
+                expected: PrimitiveTypeError
             },
             {
                 label: 'Hex color string failure inputs',
@@ -71,45 +65,72 @@ describe('ColorStringUtility', (): void => {
                     ...hexColorFailureInputs,
                     ...hexColorMixedCaseInputs
                 ],
-                expected: false
-            },
+                expected: PrimitiveTypeError
+            }
+        ];
+
+        const successScenarios: Scenario[] = [
             {
                 label: 'Hex color inputs',
                 inputs: [
                     ...hexColorInputs
                 ],
-                expected: true
+                expected: undefined
             }
         ];
 
-        describe.each(
-            scenarios
-        )('%# - $label', ({ inputs: scenarioInputs, expected: scenarioExpected }: Scenario): void => {
-            const testCases: TestCase[] = buildTestCases(scenarioInputs, scenarioExpected);
+        const scenarios: Scenario[] = [
+            ...failureScenarios.map((scenario: Scenario): Scenario => {
+                return {
+                    ...scenario,
+                    expected: false
+                };
+            }),
+            ...successScenarios.map((scenario: Scenario): Scenario => {
+                return {
+                    ...scenario,
+                    expected: true
+                };
+            })
+        ];
 
-            test.each(
-                testCases
-            )('%# - Input $input should return $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
-                expect(ColorStringUtility.isHexColor(testInput)).toBe(testExpected);
+        describe('assertHexColor', (): void => {
+            testAssertMethod(
+                ColorStringUtility.assertHexColor.bind(ColorStringUtility),
+                successScenarios,
+                failureScenarios,
+                (input: unknown): string => {
+                    return `Expected a hex color string, but received: ${typeof input}.`;
+                }
+            );
+        });
+
+        describe('isHexColor', (): void => {
+            describe.each(
+                scenarios
+            )('%# - $label', ({ inputs: scenarioInputs, expected: scenarioExpected }: Scenario): void => {
+                const testCases: TestCase[] = buildTestCases(scenarioInputs, scenarioExpected);
+
+                test.each(
+                    testCases
+                )('%# - Input $input should return $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
+                    expect(ColorStringUtility.isHexColor(testInput)).toBe(testExpected);
+                });
             });
         });
     });
 
-    describe('isHexColorRGB', (): void => {
-        const scenarios: Scenario[] = [
+    describe('HexColorRGB', (): void => {
+        const failureScenarios: Scenario[] = [
             {
                 label: 'Non-string inputs',
-                inputs: [
-                    ...nonStringInputs
-                ],
-                expected: false
+                inputs: nonStringInputs,
+                expected: PrimitiveTypeError
             },
             {
                 label: 'Empty string inputs',
-                inputs: [
-                    ...emptyStringInputs
-                ],
-                expected: false
+                inputs: emptyStringInputs,
+                expected: PrimitiveTypeError
             },
             {
                 label: 'Hex color string failure inputs',
@@ -117,7 +138,7 @@ describe('ColorStringUtility', (): void => {
                     ...hexColorFailureInputs,
                     ...hexColorMixedCaseInputs
                 ],
-                expected: false
+                expected: PrimitiveTypeError
             },
             {
                 label: 'RGBA hex color inputs',
@@ -126,8 +147,11 @@ describe('ColorStringUtility', (): void => {
                     ...hexColorRGBALowercaseInputs,
                     ...hexColorRGBAUppercaseInputs
                 ],
-                expected: false
-            },
+                expected: PrimitiveTypeError
+            }
+        ];
+
+        const successScenarios: Scenario[] = [
             {
                 label: 'RGB hex color inputs',
                 inputs: [
@@ -135,38 +159,62 @@ describe('ColorStringUtility', (): void => {
                     ...hexColorRGBLowercaseInputs,
                     ...hexColorRGBUppercaseInputs
                 ],
-                expected: true
+                expected: undefined
             }
         ];
 
-        describe.each(
-            scenarios
-        )('%# - $label', ({ inputs: scenarioInputs, expected: scenarioExpected }: Scenario): void => {
-            const testCases: TestCase[] = buildTestCases(scenarioInputs, scenarioExpected);
+        const scenarios: Scenario[] = [
+            ...failureScenarios.map((scenario: Scenario): Scenario => {
+                return {
+                    ...scenario,
+                    expected: false
+                };
+            }),
+            ...successScenarios.map((scenario: Scenario): Scenario => {
+                return {
+                    ...scenario,
+                    expected: true
+                };
+            })
+        ];
 
-            test.each(
-                testCases
-            )('%# - Input $input should return $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
-                expect(ColorStringUtility.isHexColorRGB(testInput)).toBe(testExpected);
+        describe('assertHexColorRGB', (): void => {
+            testAssertMethod(
+                ColorStringUtility.assertHexColorRGB.bind(ColorStringUtility),
+                successScenarios,
+                failureScenarios,
+                (input: unknown): string => {
+                    return `Expected a hex color RGB string, but received: ${typeof input}.`;
+                }
+            );
+        });
+
+        describe('isHexColorRGB', (): void => {
+            describe.each(
+                scenarios
+            )('%# - $label', ({ inputs: scenarioInputs, expected: scenarioExpected }: Scenario): void => {
+                const testCases: TestCase[] = buildTestCases(scenarioInputs, scenarioExpected);
+
+                test.each(
+                    testCases
+                )('%# - Input $input should return $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
+                    expect(ColorStringUtility.isHexColorRGB(testInput)).toBe(testExpected);
+                });
             });
         });
     });
 
-    describe('isHexColorRGBA', (): void => {
-        const scenarios: Scenario[] = [
+    describe('HexColorRGBA', (): void => {
+        const failureScenarios: Scenario[] = [
             {
                 label: 'Non-string inputs',
-                inputs: [
-                    ...nonStringInputs
-                ],
-                expected: false
+                inputs: nonStringInputs,
+                expected: PrimitiveTypeError
             },
             {
                 label: 'Empty string inputs',
-                inputs: [
-                    ...emptyStringInputs
-                ],
-                expected: false
+                inputs: emptyStringInputs,
+                expected: PrimitiveTypeError
             },
             {
                 label: 'Hex color string failure inputs',
@@ -174,16 +222,7 @@ describe('ColorStringUtility', (): void => {
                     ...hexColorFailureInputs,
                     ...hexColorMixedCaseInputs
                 ],
-                expected: false
-            },
-            {
-                label: 'RGBA hex color inputs',
-                inputs: [
-                    ...hexColorRGBANumberInputs,
-                    ...hexColorRGBALowercaseInputs,
-                    ...hexColorRGBAUppercaseInputs
-                ],
-                expected: true
+                expected: PrimitiveTypeError
             },
             {
                 label: 'RGB hex color inputs',
@@ -192,19 +231,59 @@ describe('ColorStringUtility', (): void => {
                     ...hexColorRGBLowercaseInputs,
                     ...hexColorRGBUppercaseInputs
                 ],
-                expected: false
+                expected: PrimitiveTypeError
             }
         ];
 
-        describe.each(
-            scenarios
-        )('%# - $label', ({ inputs: scenarioInputs, expected: scenarioExpected }: Scenario): void => {
-            const testCases: TestCase[] = buildTestCases(scenarioInputs, scenarioExpected);
+        const successScenarios: Scenario[] = [
+            {
+                label: 'RGBA hex color inputs',
+                inputs: [
+                    ...hexColorRGBANumberInputs,
+                    ...hexColorRGBALowercaseInputs,
+                    ...hexColorRGBAUppercaseInputs
+                ],
+                expected: undefined
+            }
+        ];
 
-            test.each(
-                testCases
-            )('%# - Input $input should return $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
-                expect(ColorStringUtility.isHexColorRGBA(testInput)).toBe(testExpected);
+        const scenarios: Scenario[] = [
+            ...failureScenarios.map((scenario: Scenario): Scenario => {
+                return {
+                    ...scenario,
+                    expected: false
+                };
+            }),
+            ...successScenarios.map((scenario: Scenario): Scenario => {
+                return {
+                    ...scenario,
+                    expected: true
+                };
+            })
+        ];
+
+        describe('assertHexColorRGBA', (): void => {
+            testAssertMethod(
+                ColorStringUtility.assertHexColorRGBA.bind(ColorStringUtility),
+                successScenarios,
+                failureScenarios,
+                (input: unknown): string => {
+                    return `Expected a hex color RGBA string, but received: ${typeof input}.`;
+                }
+            );
+        });
+
+        describe('isHexColorRGBA', (): void => {
+            describe.each(
+                scenarios
+            )('%# - $label', ({ inputs: scenarioInputs, expected: scenarioExpected }: Scenario): void => {
+                const testCases: TestCase[] = buildTestCases(scenarioInputs, scenarioExpected);
+
+                test.each(
+                    testCases
+                )('%# - Input $input should return $expected', ({ input: testInput, expected: testExpected }: TestCase): void => {
+                    expect(ColorStringUtility.isHexColorRGBA(testInput)).toBe(testExpected);
+                });
             });
         });
     });
