@@ -26,6 +26,7 @@ import { StaticInstanceError } from '@blwatkins/utils';
 
 import { HSL } from '../hsl';
 import { RGB } from '../rgb';
+import { ColorStringUtility } from '../string';
 
 import { ChromaAdapter } from './chroma-adapter';
 
@@ -48,15 +49,15 @@ export class ColorModeConverter {
     }
 
     public static hexToHSL(hexColor: string): HSL {
+        ColorStringUtility.assertHexColorRGB(hexColor);
         ChromaAdapter.assertValidInput(hexColor);
-        // TODO - assertValidHexColor (no alpha)
         const chromaHSL: [number, number, number] = chroma(hexColor).hsl();
         return ChromaAdapter.chromaHSLToHSL(chromaHSL);
     }
 
     public static hexToRGB(hexColor: string): RGB {
+        ColorStringUtility.assertHexColorRGB(hexColor);
         ChromaAdapter.assertValidInput(hexColor);
-        // TODO - assertValidHexColor (no alpha)
         const chromaRGB: [number, number, number] = chroma(hexColor).rgb();
         return ChromaAdapter.chromaRGBToRGB(chromaRGB);
     }
