@@ -27,6 +27,12 @@ import {NumberUtility, PrimitiveTypeError, SchemaTypeError, TypeAssertions} from
 import { HSL, HSLBuilder } from '../hsl';
 import { RGB, RGBBuilder } from '../rgb';
 
+export interface ChromaHSL {
+    h: number,
+    s: number,
+    l: number
+}
+
 export class ChromaAdapter {
     public static assertValidInput(input: unknown): void {
         if (!chroma.valid(input)) {
@@ -78,7 +84,7 @@ export class ChromaAdapter {
         return builder.build();
     }
 
-    public static hslToChromaHSL(hsl: HSL): { h: number, s: number, l: number } {
+    public static hslToChromaHSL(hsl: HSL): ChromaHSL {
         // TODO - assertValidHSL [HSLUtility]
         return {
             h: hsl.hue,

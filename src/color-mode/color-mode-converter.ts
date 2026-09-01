@@ -20,9 +20,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-// TODO - RGB to hex
-// TODO - HSL to hex
-
 import chroma from 'chroma-js';
 
 import { StaticInstanceError } from '@blwatkins/utils';
@@ -52,13 +49,51 @@ export class ColorModeConverter {
 
     public static hexToHSL(hexColor: string): HSL {
         ChromaAdapter.assertValidInput(hexColor);
+        // TODO - assertValidHexColor (no alpha)
         const chromaHSL: [number, number, number] = chroma(hexColor).hsl();
         return ChromaAdapter.chromaHSLToHSL(chromaHSL);
     }
 
     public static hexToRGB(hexColor: string): RGB {
         ChromaAdapter.assertValidInput(hexColor);
+        // TODO - assertValidHexColor (no alpha)
         const chromaRGB: [number, number, number] = chroma(hexColor).rgb();
         return ChromaAdapter.chromaRGBToRGB(chromaRGB);
+    }
+
+    public static hslToHex(hsl: HSL): string {
+        // TODO - assertValidHSL [HSLUtility]
+        const chromaHSL: { h: number, s: number, l: number} = ChromaAdapter.hslToChromaHSL(hsl);
+        ChromaAdapter.assertValidInput(chromaHSL);
+        return chroma(chromaHSL).hex('rgb');
+    }
+
+    public static hslToRGB(hsl: HSL): RGB {
+        return ColorModeConverter.hexToRGB(ColorModeConverter.hslToHex(hsl));
+    }
+
+    public static hslToStyle(hsl: HSL): string {
+        // TODO - assertValidHSL [HSLUtility]
+        const chromaHSL: { h: number, s: number, l: number} = ChromaAdapter.hslToChromaHSL(hsl);
+        ChromaAdapter.assertValidInput(chromaHSL);
+        return chroma(chromaHSL).css('hsl');
+    }
+
+    public static rgbToHex(rgb: RGB): string {
+        // TODO - assertValidRGB [RGBUtility]
+        const chromaRGB: [number, number, number] = ChromaAdapter.rgbToChromaRGB(rgb);
+        ChromaAdapter.assertValidInput(chromaRGB);
+        return chroma(chromaRGB).hex('rgb');
+    }
+
+    public static rgbToHSL(rgb: RGB): HSL {
+        return ColorModeConverter.hexToHSL(ColorModeConverter.rgbToHex(rgb));
+    }
+
+    public static rgbToStyle(rgb: RGB): string {
+        // TODO - assertValidRGB [RGBUtility]
+        const chromaRGB: [number, number, number] = ChromaAdapter.rgbToChromaRGB(rgb);
+        ChromaAdapter.assertValidInput(chromaRGB);
+        return chroma(chromaRGB).css('rgb');
     }
 }
