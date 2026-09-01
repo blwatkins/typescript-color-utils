@@ -82,6 +82,6 @@ export class HSLBuilder {
             saturation: this.#saturation,
             lightness: this.#lightness,
             alpha: this.#alpha
-        }
+        };
     }
 }

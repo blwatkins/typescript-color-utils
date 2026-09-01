@@ -64,7 +64,7 @@ export class ColorModeConverter {
 
     public static hslToHex(hsl: HSL): string {
         // TODO - assertValidHSL [HSLUtility]
-        const chromaHSL: { h: number, s: number, l: number} = ChromaAdapter.hslToChromaHSL(hsl);
+        const chromaHSL: { h: number; s: number; l: number; } = ChromaAdapter.hslToChromaHSL(hsl);
         ChromaAdapter.assertValidInput(chromaHSL);
         return chroma(chromaHSL).hex('rgb');
     }
@@ -75,7 +75,7 @@ export class ColorModeConverter {
 
     public static hslToStyle(hsl: HSL): string {
         // TODO - assertValidHSL [HSLUtility]
-        const chromaHSL: { h: number, s: number, l: number} = ChromaAdapter.hslToChromaHSL(hsl);
+        const chromaHSL: { h: number; s: number; l: number; } = ChromaAdapter.hslToChromaHSL(hsl);
         ChromaAdapter.assertValidInput(chromaHSL);
         return chroma(chromaHSL).css('hsl');
     }

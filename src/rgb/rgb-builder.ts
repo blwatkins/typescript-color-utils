@@ -31,26 +31,26 @@ export class RGBBuilder {
     #alpha: number | undefined = undefined;
 
     public setRed(red: number): this {
-        NumberUtility.assertFiniteNumber(red)
+        NumberUtility.assertFiniteNumber(red);
         this.#red = Math.floor(MathUtility.constrain(red, minRGBComponent, maxRGBComponent));
         return this;
     }
 
     public setGreen(green: number): this {
-        NumberUtility.assertFiniteNumber(green)
+        NumberUtility.assertFiniteNumber(green);
         this.#green = Math.floor(MathUtility.constrain(green, minRGBComponent, maxRGBComponent));
         return this;
     }
 
     public setBlue(blue: number): this {
-        NumberUtility.assertFiniteNumber(blue)
+        NumberUtility.assertFiniteNumber(blue);
         this.#blue = Math.floor(MathUtility.constrain(blue, minRGBComponent, maxRGBComponent));
         return this;
     }
 
     public setAlpha(alpha: number | undefined): this {
         if (alpha !== undefined) {
-            NumberUtility.assertFiniteNumber(alpha)
+            NumberUtility.assertFiniteNumber(alpha);
             this.#alpha = Math.floor(MathUtility.constrain(alpha, minRGBComponent, maxRGBComponent));
         } else {
             this.#alpha = undefined;
@@ -71,6 +71,6 @@ export class RGBBuilder {
             green: this.#green,
             blue: this.#blue,
             alpha: this.#alpha
-        }
+        };
     }
 }

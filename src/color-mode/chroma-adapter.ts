@@ -22,15 +22,15 @@
 
 import chroma from 'chroma-js';
 
-import {NumberUtility, PrimitiveTypeError, SchemaTypeError, TypeAssertions} from '@blwatkins/utils';
+import { NumberUtility, PrimitiveTypeError, SchemaTypeError, TypeAssertions } from '@blwatkins/utils';
 
 import { HSL, HSLBuilder } from '../hsl';
 import { RGB, RGBBuilder } from '../rgb';
 
 export interface ChromaHSL {
-    h: number,
-    s: number,
-    l: number
+    h: number;
+    s: number;
+    l: number;
 }
 
 export class ChromaAdapter {
@@ -41,12 +41,7 @@ export class ChromaAdapter {
     }
 
     public static chromaHSLToHSL(chromaHSL: [number, number, number] | [number, number, number, number]): HSL {
-        TypeAssertions.assertArrayType(chromaHSL);
-
-        if (!(chromaHSL.length === 3 || chromaHSL.length === 4)) {
-            throw new PrimitiveTypeError('Invalid chroma.js HSL array. Array length should be 3 or 4.');
-        }
-
+        ChromaAdapter.#assertValidChromaArray(chromaHSL);
         const builder: HSLBuilder = new HSLBuilder();
 
         if (NumberUtility.isFiniteNumber(chromaHSL[0])) {
@@ -66,12 +61,7 @@ export class ChromaAdapter {
     }
 
     public static chromaRGBToRGB(chromaRGB: [number, number, number] | [number, number, number, number]): RGB {
-        TypeAssertions.assertArrayType(chromaRGB);
-
-        if (!(chromaRGB.length === 3 || chromaRGB.length === 4)) {
-           throw new PrimitiveTypeError('Invalid chroma.js RGB array. Array length should be 3 or 4.');
-        }
-
+        ChromaAdapter.#assertValidChromaArray(chromaRGB);
         const builder: RGBBuilder = new RGBBuilder();
         builder.setRed(chromaRGB[0])
             .setGreen(chromaRGB[1])
@@ -90,11 +80,19 @@ export class ChromaAdapter {
             h: hsl.hue,
             s: hsl.saturation / 100,
             l: hsl.lightness / 100
-        }
+        };
     }
 
     public static rgbToChromaRGB(rgb: RGB): [number, number, number] {
         // TODO - assertValidRGB [RGBUtility]
         return [rgb.red, rgb.green, rgb.blue];
+    }
+
+    static #assertValidChromaArray(input: unknown): asserts input is ([number, number, number] | [number, number, number, number]) {
+        TypeAssertions.assertArrayType(input);
+
+        if (!(input.length === 3 || input.length === 4)) {
+            throw new PrimitiveTypeError('Invalid chroma.js array. Array length should be 3 or 4.');
+        }
     }
 }
