@@ -62,22 +62,22 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@types/chroma-js": "^3.1.2",
-    "@types/node": "^26.4.0",
-    "@vitest/coverage-v8": "^4.1.11",
-    "@vitest/ui": "^4.1.11",
-    "eslint": "^10.9.1",
-    "eslint-plugin-es-x": "^10.0.0",
-    "eslint-plugin-jsdoc": "^64.2.1",
-    "globals": "^17.11.0",
-    "tsdown": "^0.22.14",
+    "@types/chroma-js": "^3.1.3",
+    "@types/node": "^26.6.6",
+    "@vitest/coverage-v8": "^5.0.5",
+    "@vitest/ui": "^5.0.5",
+    "eslint": "^10.13.0",
+    "eslint-plugin-es-x": "^10.1.0",
+    "eslint-plugin-jsdoc": "^65.4.2",
+    "globals": "^17.13.0",
+    "tsdown": "^0.23.3",
     "typedoc": "^0.28.19",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.68.0",
-    "vitest": "^4.1.11"
+    "typescript": "^7.0.2",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.0.5"
   },
   "peerDependencies": {
-    "@types/chroma-js": "^3.1.2"
+    "@types/chroma-js": "^3.1.3"
   },
   "keywords": [
     "typescript",
