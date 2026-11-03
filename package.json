@@ -57,7 +57,7 @@
   "dependencies": {
     "@blwatkins/utils": "alpha",
     "chroma-js": "^3.2.0",
-    "typebox": "^1.3.20"
+    "typebox": "^1.3.34"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
